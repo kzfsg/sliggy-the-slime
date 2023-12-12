@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://c82kqhqghx1lj"]
+
+[ext_resource type="Texture2D" uid="uid://dtgdw4og6n5dm" path="res://Character/sliggy_death_detailed.png" id="1_gew0k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mw2xg"]
+size = Vector2(42, 42)
+
+[node name="Block" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(22, 22)
+scale = Vector2(0.134375, 0.134375)
+texture = ExtResource("1_gew0k")
+hframes = 7
+frame = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(22, 22)
+shape = SubResource("RectangleShape2D_mw2xg")

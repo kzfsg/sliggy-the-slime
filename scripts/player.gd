@@ -1,7 +1,10 @@
 extends CharacterBody2D
 
+var blocknode = preload("res://scenes/block.tscn")
+
 @onready var ap = $AnimationPlayer
 @onready var sprite = $Sprite2D
+@onready var body = $Node2D
 
 const SPEED = 150.0
 const JUMP_VELOCITY = -400.0
@@ -78,3 +81,11 @@ func update_animations(direction):
 			ap.play("fall")
 
 
+func _on_area_2d_area_entered(area):
+	if area.is_in_group("spike"):
+		var instance = blocknode.instantiate()
+		instance.position(body.position)
+		add_child(instance)
+		global_position = Vector2(52,331)
+		
+		

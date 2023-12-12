@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://d3bbpid0yagee"]
+[gd_scene load_steps=14 format=3 uid="uid://d3bbpid0yagee"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_b2myt"]
 [ext_resource type="Texture2D" uid="uid://1fbo83iq3xgo" path="res://Character/idle_slime.png" id="1_toxrr"]
@@ -8,6 +8,9 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y6vtj"]
 radius = 7.0
 height = 28.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rkftq"]
+size = Vector2(12, 26)
 
 [sub_resource type="Animation" id="Animation_lu4gi"]
 length = 0.001
@@ -346,11 +349,15 @@ scale = Vector2(0.108984, 0.108984)
 texture = ExtResource("1_toxrr")
 hframes = 4
 
-[node name="Area2D" type="Area2D" parent="." groups=["player"]]
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 7)
 shape = SubResource("CapsuleShape2D_y6vtj")
+
+[node name="Area2D" type="Area2D" parent="." groups=["player"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1, 8)
+shape = SubResource("RectangleShape2D_rkftq")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -39)
@@ -361,4 +368,5 @@ libraries = {
 }
 autoplay = "idle"
 
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
