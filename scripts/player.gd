@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal hit(pos)
+
 var blocknode = preload("res://scenes/block.tscn")
 
 @onready var ap = $AnimationPlayer
@@ -83,9 +85,10 @@ func update_animations(direction):
 
 func _on_area_2d_area_entered(area):
 	if area.is_in_group("spike"):
-		var instance = blocknode.instantiate()
-		instance.position(body.position)
-		add_child(instance)
-		global_position = Vector2(52,331)
+		hit.emit(position)
+		#var instance = blocknode.instantiate(position)
+		#add_child(instance)
+		#global_position = Vector2(52,331)
+		position = Vector2(24,326)
 		
 		

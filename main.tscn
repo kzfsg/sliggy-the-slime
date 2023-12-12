@@ -1,5 +1,6 @@
-[gd_scene load_steps=233 format=3 uid="uid://b0fwrlh6e70ea"]
+[gd_scene load_steps=234 format=3 uid="uid://b0fwrlh6e70ea"]
 
+[ext_resource type="Script" path="res://main.gd" id="1_4i1m5"]
 [ext_resource type="Texture2D" uid="uid://v02xphtccaxt" path="res://lab-tileset/2 Background/Day/6.png" id="1_hx0lm"]
 [ext_resource type="Texture2D" uid="uid://dbx0j3bqbnv4s" path="res://lab-tileset/1 Tiles/Tiles_01.png" id="3_23hgb"]
 [ext_resource type="Texture2D" uid="uid://bklnapetdg5an" path="res://lab-tileset/1 Tiles/Tiles_02.png" id="4_kgpw2"]
@@ -1290,6 +1291,8 @@ sources/100 = SubResource("TileSetAtlasSource_rqbri")
 
 [node name="Main" type="Node2D"]
 position = Vector2(1, 0)
+script = ExtResource("1_4i1m5")
+block_scene = ExtResource("130_h62uu")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_left = -1.0
@@ -1434,7 +1437,9 @@ position = Vector2(178, 170)
 
 [node name="Collider" parent="Level" instance=ExtResource("129_amj84")]
 
-[node name="Block" parent="." instance=ExtResource("130_h62uu")]
+[node name="Block" parent="Level" instance=ExtResource("130_h62uu")]
 z_index = 1
-position = Vector2(-90, 319)
+position = Vector2(-89, 319)
 scale = Vector2(0.414, 0.414)
+
+[connection signal="hit" from="Player" to="." method="_on_player_hit"]

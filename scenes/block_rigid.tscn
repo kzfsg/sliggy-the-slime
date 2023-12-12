@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://bfdgos6lkakak"]
+
+[node name="BlockRigid" type="RigidBody2D"]
+position = Vector2(52, 331)
