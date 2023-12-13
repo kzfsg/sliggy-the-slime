@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
-signal collision(collision, player_pos)
-signal player_pos_signal(player_pos)
-signal broadcast_player_collision_pos(pos)
+#signal collision(collision, player_pos)
+#signal player_pos_signal(player_pos)
+#signal broadcast_player_collision_pos(pos)
 #signal player_death(pos)
 
 const SPEED = 300.
@@ -11,17 +11,21 @@ const JUMP_EXTEND_DELTA = 0.15
 
 @onready var collision_shape_2d = $CollisionShape2D
 @onready var animated_sprite_2d = $AnimatedSprite2D
+@onready var tile_map = $"../level_tiles"
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var is_left = false
 var jump_extend_counter = 0
+var is_dead = false
 var is_respawning = false
 var should_show_after_death = false
 
-func _process(_delta):
-	emit_signal("player_pos_signal", position)
+#func _process(_delta):
+	#emit_signal("player_pos_signal", position)
 
 func _physics_process(delta):
+	var cannot_move = is_dead or is_respawning
 	if not is_respawning:
 		should_show_after_death = false
 	#animations
@@ -39,7 +43,7 @@ func _physics_process(delta):
 	
 	if is_on_floor():
 		# Handle jump.
-		if not is_respawning and Input.is_action_just_pressed("jump"):
+		if not cannot_move and Input.is_action_just_pressed("jump"):
 			jump_extend_counter += delta
 			velocity.y = JUMP_VELOCITY
 	else:
@@ -52,7 +56,7 @@ func _physics_process(delta):
 			velocity.y += gravity * delta
 			animated_sprite_2d.animation = "jumping"
 
-	if not is_respawning:
+	if not cannot_move:
 		# Get the input direction and handle the movement/deceleration.
 		# As good practice, you should replace UI actions with custom gameplay actions.
 		var direction = Input.get_axis("left", "right")
@@ -73,20 +77,23 @@ func _physics_process(delta):
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
 		if collision:
-			emit_signal("collision", collision, position)
+			#emit_signal("collision", collision, position)
+			tile_map.on_player_collision(collision, position)
 
-func _on_tile_map_player_hit_damage(pos):
-	collision_shape_2d.set_deferred("disabled",true)
+func die():
+	is_dead = true
 	hide()
+	collision_shape_2d.set_deferred("disabled",true)
 
 func respawn():
+	velocity = Vector2(0,0)
+	is_dead = false
 	collision_shape_2d.disabled = false
 	is_respawning = true
 	position = Vector2(30,490)
 
-func _on_death_player_death_player_finished(pos):
-	respawn()
-	#show()
+#func _on_death_player_death_player_finished(pos):
+	#respawn()
 
 func _on_respawn_pressed():
 	respawn()

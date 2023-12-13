@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://lb4ug62creoj"]
+
+[ext_resource type="Script" path="res://scripts/endpoint.gd" id="1_y135c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4igkx"]
+
+[node name="endpoint" type="Area2D"]
+script = ExtResource("1_y135c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_4igkx")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

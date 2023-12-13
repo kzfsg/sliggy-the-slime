@@ -1,19 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://c4jr28mk35kuk"]
+[gd_scene load_steps=6 format=3 uid="uid://un0j7l2upmv2"]
 
-[ext_resource type="Texture2D" uid="uid://dwoe6qp8ytr5g" path="res://lab-tileset/2 Background/Night/6.png" id="1_5ak0k"]
-[ext_resource type="Script" path="res://main.gd" id="1_vij7q"]
-[ext_resource type="Texture2D" uid="uid://cb6g6sbscj8fs" path="res://Dungeon Tile Set.png" id="2_6qa2b"]
-[ext_resource type="Script" path="res://scripts/TileMap.gd" id="3_3lqoj"]
-[ext_resource type="PackedScene" uid="uid://dsyqubot4iron" path="res://scenes/player.tscn" id="3_jo5if"]
-[ext_resource type="Script" path="res://scripts/mouse_pos.gd" id="5_7yjsr"]
-[ext_resource type="Script" path="res://scripts/player_pos.gd" id="6_i1uty"]
-[ext_resource type="Script" path="res://scripts/tile_pos.gd" id="7_vua62"]
-[ext_resource type="Script" path="res://tile_indicator.gd" id="8_d5mti"]
-[ext_resource type="PackedScene" uid="uid://be6nts5w4barw" path="res://scenes/death_player.tscn" id="9_prc6a"]
-[ext_resource type="PackedScene" uid="uid://c6nqqes4yjqdy" path="res://scenes/block.tscn" id="11_67yw1"]
+[ext_resource type="Texture2D" uid="uid://cb6g6sbscj8fs" path="res://Dungeon Tile Set.png" id="1_s8ahx"]
+[ext_resource type="Script" path="res://scripts/level_tiles.gd" id="2_wm5qq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rjhun"]
-texture = ExtResource("2_6qa2b")
+texture = ExtResource("1_s8ahx")
 1:1/0 = 0
 1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:1/0/physics_layer_0/angular_velocity = 0.0
@@ -414,7 +405,7 @@ texture = ExtResource("2_6qa2b")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pq02s"]
 resource_name = "Spikes"
-texture = ExtResource("2_6qa2b")
+texture = ExtResource("1_s8ahx")
 1:14/0 = 0
 1:14/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:14/0/physics_layer_0/angular_velocity = 0.0
@@ -440,92 +431,15 @@ texture = ExtResource("2_6qa2b")
 6:14/0/physics_layer_0/angular_velocity = 0.0
 6:14/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5.71429, 3.42857, -3.42857, -1.14286, 3.5, -1.14286, 5.71429, 3.42857, 5.71429, 8, 8, 8, -5.71429, 8)
 
-[sub_resource type="TileSet" id="TileSet_uthfm"]
+[sub_resource type="TileSet" id="TileSet_5aaak"]
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_rjhun")
 sources/1 = SubResource("TileSetAtlasSource_pq02s")
 
-[node name="main" type="Node"]
-script = ExtResource("1_vij7q")
-block_scene = ExtResource("11_67yw1")
-
-[node name="Background" type="TextureRect" parent="."]
-texture_filter = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("1_5ak0k")
-
-[node name="TileMap" type="TileMap" parent="."]
+[node name="TileMap" type="TileMap"]
 texture_filter = 1
 scale = Vector2(3, 3)
-tile_set = SubResource("TileSet_uthfm")
+tile_set = SubResource("TileSet_5aaak")
 format = 2
-layer_0/tile_data = PackedInt32Array(720897, 131072, 1, 720898, 131072, 1, 720899, 131072, 1, 720900, 131072, 1, 720901, 131072, 1, 720902, 131072, 1, 720904, 131072, 1, 720905, 131072, 1, 720906, 131072, 1, 720907, 131072, 1, 720908, 131072, 1, 720909, 131072, 1, 720910, 131072, 1, 720911, 131072, 1, 720912, 131072, 1, 720913, 131072, 1, 720914, 131072, 1, 720915, 131072, 1, 720916, 131072, 1, 720917, 131072, 1, 720918, 131072, 1, 720919, 131072, 1, 720896, 131072, 1, 655384, 65536, 6, 589848, 65536, 6, 524312, 65536, 6, 458776, 65536, 6, 393240, 65536, 6, 720895, 196608, 6, 655359, 196608, 6, 589823, 196608, 6, 524287, 196608, 6, 458751, 196608, 6, 524294, 65536, 1, 589830, 65536, 2, 655366, 65536, 2, 524295, 131072, 1, 589831, 131072, 2, 655367, 131072, 2, 720903, 131072, 1, 524296, 196608, 1, 589832, 196608, 2, 655368, 196608, 2, 655372, 196609, 14, 655373, 196609, 14, 655374, 196609, 14, 655363, 65536, 1, 655362, 196609, 14, 655365, 196609, 1610612750, 327686, 196609, 805306382, 327687, 196609, 805306382, 327688, 196609, 805306382, 589829, 196609, 1610612750, 524293, 196609, 1610612750, 0, 131072, 3, 1, 131072, 3, 2, 131072, 3, 3, 131072, 3, 4, 131072, 3, 5, 131072, 3, 6, 131072, 3, 7, 131072, 3, 8, 131072, 3, 9, 131072, 3, 10, 131072, 3, 11, 131072, 3, 12, 131072, 3, 13, 131072, 3, 14, 131072, 3, 15, 131072, 3, 16, 131072, 3, 17, 131072, 3, 18, 131072, 3, 19, 131072, 3, 20, 131072, 3, 21, 131072, 3, 22, 131072, 3, 23, 131072, 3, 262150, 131072, 3, 196614, 131072, 12, 131078, 131072, 12, 65542, 131072, 12, 262152, 131072, 3, 196616, 131072, 12, 131080, 131072, 12, 65544, 131072, 12, 262151, 131072, 3)
-script = ExtResource("3_3lqoj")
-
-[node name="player" parent="." instance=ExtResource("3_jo5if")]
-position = Vector2(29, 490)
-scale = Vector2(0.276, 0.26)
-
-[node name="death_player" parent="." instance=ExtResource("9_prc6a")]
-position = Vector2(-97, -53)
-
-[node name="hud" type="Node" parent="."]
-
-[node name="clear_all" type="Button" parent="hud"]
-offset_left = 1079.0
-offset_top = 2.0
-offset_right = 1150.0
-offset_bottom = 33.0
-text = "clear_all"
-
-[node name="respawn" type="Button" parent="hud"]
-offset_left = 996.0
-offset_top = 2.0
-offset_right = 1071.0
-offset_bottom = 33.0
-text = "respawn"
-
-[node name="debug helpers" type="Node" parent="."]
-
-[node name="mouse_pos" type="Label" parent="debug helpers"]
-offset_top = 2.0
-offset_right = 40.0
-offset_bottom = 25.0
-script = ExtResource("5_7yjsr")
-
-[node name="player_pos" type="Label" parent="debug helpers"]
-offset_top = 26.0
-offset_right = 40.0
-offset_bottom = 49.0
-script = ExtResource("6_i1uty")
-
-[node name="tile_pos" type="Label" parent="debug helpers"]
-offset_top = 49.0
-offset_right = 40.0
-offset_bottom = 72.0
-script = ExtResource("7_vua62")
-
-[node name="tile_indicator" type="ColorRect" parent="debug helpers"]
-offset_left = -3.0
-offset_top = -2.0
-offset_right = 37.0
-offset_bottom = 38.0
-scale = Vector2(0.161681, 0.15145)
-color = Color(1, 0, 0, 1)
-script = ExtResource("8_d5mti")
-
-[connection signal="broadcast_tile_pos" from="TileMap" to="debug helpers/tile_pos" method="_on_tile_map_broadcast_tile_pos"]
-[connection signal="broadcast_tile_pos" from="TileMap" to="debug helpers/tile_indicator" method="_on_tile_map_broadcast_tile_pos"]
-[connection signal="player_hit_damage" from="TileMap" to="." method="_on_tile_map_player_hit_damage"]
-[connection signal="player_hit_damage" from="TileMap" to="player" method="_on_tile_map_player_hit_damage"]
-[connection signal="player_hit_damage" from="TileMap" to="death_player" method="_on_tile_map_player_hit_damage"]
-[connection signal="collision" from="player" to="TileMap" method="_on_player_collision"]
-[connection signal="player_pos_signal" from="player" to="debug helpers/player_pos" method="_on_player_player_pos_signal"]
-[connection signal="death_player_finished" from="death_player" to="." method="_on_death_player_death_player_finished"]
-[connection signal="death_player_finished" from="death_player" to="player" method="_on_death_player_death_player_finished"]
-[connection signal="pressed" from="hud/clear_all" to="." method="_on_clear_all_pressed"]
-[connection signal="pressed" from="hud/respawn" to="player" method="_on_respawn_pressed"]
+layer_0/tile_data = PackedInt32Array(720897, 131072, 1, 720898, 131072, 1, 720899, 131072, 1, 720900, 131072, 1, 720906, 131072, 1, 720907, 131072, 1, 720908, 131072, 1, 720909, 131072, 1, 720910, 131072, 1, 720911, 131072, 1, 720912, 131072, 1, 720913, 131072, 1, 720914, 131072, 1, 720915, 131072, 1, 720916, 131072, 1, 720917, 131072, 1, 720918, 131072, 1, 720919, 131072, 1, 720896, 131072, 1, 655384, 65536, 6, 589848, 65536, 6, 524312, 65536, 6, 458776, 65536, 6, 393240, 65536, 6, 720895, 196608, 6, 655359, 196608, 6, 589823, 196608, 6, 524287, 196608, 6, 458751, 196608, 6, 0, 131072, 3, 1, 131072, 3, 2, 131072, 3, 3, 131072, 3, 4, 131072, 3, 5, 131072, 3, 6, 131072, 3, 7, 131072, 3, 8, 131072, 3, 9, 131072, 3, 10, 131072, 3, 11, 131072, 3, 12, 131072, 3, 13, 131072, 3, 14, 131072, 3, 15, 131072, 3, 16, 131072, 3, 17, 131072, 3, 18, 131072, 3, 19, 131072, 3, 20, 131072, 3, 21, 131072, 3, 22, 131072, 3, 23, 131072, 3, 131078, 131072, 12, 65542, 131072, 12, 131080, 131072, 12, 65544, 131072, 12)
+script = ExtResource("2_wm5qq")

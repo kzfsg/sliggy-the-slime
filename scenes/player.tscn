@@ -172,16 +172,15 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8aeph"]
 size = Vector2(170.511, 259.977)
 
-[node name="player" type="CharacterBody2D"]
+[node name="player" type="CharacterBody2D" groups=["player"]]
 scale = Vector2(0.266935, 0.2524)
 script = ExtResource("1_8krbp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_loumv")
-animation = &"respawn"
+animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.0318253
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2.07706, 30.0118)

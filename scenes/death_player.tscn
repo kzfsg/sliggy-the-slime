@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://be6nts5w4barw"]
+[gd_scene load_steps=12 format=3 uid="uid://be6nts5w4barw"]
 
 [ext_resource type="Texture2D" uid="uid://dac7tw72s8gmx" path="res://sprites/sligga_death_detailed.png" id="1_ovrjl"]
 [ext_resource type="Script" path="res://scripts/death_player.gd" id="2_i7te4"]
+[ext_resource type="PackedScene" uid="uid://c6nqqes4yjqdy" path="res://scenes/block.tscn" id="3_sskk8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aafom"]
 atlas = ExtResource("1_ovrjl")
@@ -65,6 +66,6 @@ scale = Vector2(0.26, 0.26)
 sprite_frames = SubResource("SpriteFrames_mo6k7")
 frame_progress = 0.0881467
 script = ExtResource("2_i7te4")
+block_scene = ExtResource("3_sskk8")
 
-[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
 [connection signal="animation_looped" from="." to="." method="_on_animation_looped"]
