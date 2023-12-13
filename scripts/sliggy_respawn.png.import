@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dlb18ccytoluk"
-path="res://.godot/imported/run_slime.png-fb4f1a93576a5ccbcd8d7817e10640dc.ctex"
+uid="uid://cp8j20evmbyr6"
+path="res://.godot/imported/sliggy_respawn.png-7e1d9279bb9e0e881cafb7018d89f959.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Character/run_slime.png"
-dest_files=["res://.godot/imported/run_slime.png-fb4f1a93576a5ccbcd8d7817e10640dc.ctex"]
+source_file="res://scripts/sliggy_respawn.png"
+dest_files=["res://.godot/imported/sliggy_respawn.png-7e1d9279bb9e0e881cafb7018d89f959.ctex"]
 
 [params]
 

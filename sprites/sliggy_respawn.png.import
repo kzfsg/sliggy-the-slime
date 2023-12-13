@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwx3gaqhcjknb"
-path="res://.godot/imported/slime_idle2.png-02e38c7354c92b061e61fd3fc8bd145d.ctex"
+uid="uid://dlg333dl5xd6x"
+path="res://.godot/imported/sliggy_respawn.png-c0930c0f28b6ce69e96257061307a129.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Character/Slimes/slime_idle2.png"
-dest_files=["res://.godot/imported/slime_idle2.png-02e38c7354c92b061e61fd3fc8bd145d.ctex"]
+source_file="res://sprites/sliggy_respawn.png"
+dest_files=["res://.godot/imported/sliggy_respawn.png-c0930c0f28b6ce69e96257061307a129.ctex"]
 
 [params]
 

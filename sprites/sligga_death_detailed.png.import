@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwu3fpjqw0i54"
-path="res://.godot/imported/slime_jump.png-c2eea4e27492a6c62ae54675af309637.ctex"
+uid="uid://dac7tw72s8gmx"
+path="res://.godot/imported/sligga_death_detailed.png-7f1b40b4aeb436355cbd8f69f41749b3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Character/Slimes/slime_jump.png"
-dest_files=["res://.godot/imported/slime_jump.png-c2eea4e27492a6c62ae54675af309637.ctex"]
+source_file="res://sprites/sligga_death_detailed.png"
+dest_files=["res://.godot/imported/sligga_death_detailed.png-7f1b40b4aeb436355cbd8f69f41749b3.ctex"]
 
 [params]
 

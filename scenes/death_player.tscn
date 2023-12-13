@@ -1,0 +1,70 @@
+[gd_scene load_steps=11 format=3 uid="uid://be6nts5w4barw"]
+
+[ext_resource type="Texture2D" uid="uid://dac7tw72s8gmx" path="res://sprites/sligga_death_detailed.png" id="1_ovrjl"]
+[ext_resource type="Script" path="res://scripts/death_player.gd" id="2_i7te4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aafom"]
+atlas = ExtResource("1_ovrjl")
+region = Rect2(0, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wcgqc"]
+atlas = ExtResource("1_ovrjl")
+region = Rect2(320, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s8qcs"]
+atlas = ExtResource("1_ovrjl")
+region = Rect2(640, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p53rc"]
+atlas = ExtResource("1_ovrjl")
+region = Rect2(960, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_21utt"]
+atlas = ExtResource("1_ovrjl")
+region = Rect2(1280, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_owxvx"]
+atlas = ExtResource("1_ovrjl")
+region = Rect2(1600, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2f5mv"]
+atlas = ExtResource("1_ovrjl")
+region = Rect2(1920, 0, 320, 320)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mo6k7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aafom")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wcgqc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s8qcs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p53rc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_21utt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_owxvx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2f5mv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[node name="death_player" type="AnimatedSprite2D"]
+scale = Vector2(0.26, 0.26)
+sprite_frames = SubResource("SpriteFrames_mo6k7")
+frame_progress = 0.0881467
+script = ExtResource("2_i7te4")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
+[connection signal="animation_looped" from="." to="." method="_on_animation_looped"]
