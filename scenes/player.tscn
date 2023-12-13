@@ -169,8 +169,8 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8aeph"]
-size = Vector2(170.511, 259.977)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x8dh7"]
+size = Vector2(130.286, 209.538)
 
 [node name="player" type="CharacterBody2D" groups=["player"]]
 scale = Vector2(0.266935, 0.2524)
@@ -178,12 +178,14 @@ script = ExtResource("1_8krbp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
+position = Vector2(-1.90735e-06, -31.6957)
+scale = Vector2(0.804381, 0.809529)
 sprite_frames = SubResource("SpriteFrames_loumv")
 animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2.07706, 30.0118)
-shape = SubResource("RectangleShape2D_8aeph")
+position = Vector2(-5.20346, -5.71983)
+shape = SubResource("RectangleShape2D_x8dh7")
 
 [connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]
