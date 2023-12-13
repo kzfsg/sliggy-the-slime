@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://e0dubwvcsngc"
-path="res://.godot/imported/1.png-b98014087c76eaf20fdbd8526bb7708d.ctex"
+uid="uid://dt62ilo4af3h5"
+path="res://.godot/imported/drone.png-cdda5ce863d3d23ece446282b3f5b02e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://lab-tileset/2 Background/Night/1.png"
-dest_files=["res://.godot/imported/1.png-b98014087c76eaf20fdbd8526bb7708d.ctex"]
+source_file="res://sprites/drone.png"
+dest_files=["res://.godot/imported/drone.png-cdda5ce863d3d23ece446282b3f5b02e.ctex"]
 
 [params]
 

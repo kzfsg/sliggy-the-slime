@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bua3rsxer1ebf"]
+
+[ext_resource type="Texture2D" uid="uid://evnkchj8kvug" path="res://lab-tileset/2 Background/Night/4.png" id="1_ballp"]
+
+[node name="level_background_2" type="TextureRect"]
+texture_filter = 1
+offset_right = 1150.0
+offset_bottom = 647.0
+texture = ExtResource("1_ballp")
