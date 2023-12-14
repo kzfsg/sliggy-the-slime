@@ -24,6 +24,7 @@ var is_respawning = false
 var should_show_after_death = false
 var spawning = false
 var pushing = false
+var lives = 0
 
 func jump(delta):
 	jump_extend_counter += delta
@@ -33,10 +34,12 @@ func clear():
 	get_tree().call_group("blocks", "queue_free")
 
 func _ready():
-	#spawning = true
+	spawning = true
 	animated_sprite_2d.play("spawn")
 
 func _process(_delta):
+	if spawning:
+		return
 	#emit_signal("player_pos_signal", position)
 	if Input.is_action_just_pressed("clear"):
 		clear()
@@ -44,18 +47,19 @@ func _process(_delta):
 		respawn()
 
 func _physics_process(delta):
-	#print(animated_sprite_2d.animation)
-	if spawning:
-		return
 	var cannot_move = is_dead or is_respawning
 	if not is_respawning:
 		should_show_after_death = false
+	if spawning:
+		return
 	#animations	
-	if (get_real_velocity().x > 0 || get_real_velocity().x < 0) and is_on_floor():
+	if get_real_velocity().x != 0 and is_on_floor():
+		print('not here')
 		if pushing:
 			animated_sprite_2d.animation = "push"
 		else:
 			animated_sprite_2d.animation = "running"
+	#delay enabling collision to the second frame so it doesn't clip the spawned block
 	elif is_respawning:
 		if should_show_after_death:
 			show()
@@ -63,13 +67,12 @@ func _physics_process(delta):
 			collision_shape_2d.disabled = false
 		else:
 			should_show_after_death = true
-		animated_sprite_2d.animation = "respawn"
+		animated_sprite_2d.play("respawn")
+		return
 	elif is_on_floor():
 		animated_sprite_2d.animation = "idle"
-		
-	
 	if not is_on_floor() and not cannot_move and Input.is_action_just_pressed("jump") and coyote_counter > 0:
-			jump(delta)
+		jump(delta)
 	
 	if is_on_floor():
 		# Coyote Time
@@ -146,6 +149,7 @@ func die():
 	#position = spawnpoint.position
 
 func respawn():
+	print('respawn')
 	stop_moving()
 	position = spawnpoint.position
 	#collision_shape_2d.disabled = false
@@ -155,11 +159,12 @@ func respawn():
 func _on_respawn_pressed():
 	respawn()
 
+func _on_animated_sprite_2d_animation_finished():
+	print('finished')
+	if spawning:
+		spawning = false
+
 func _on_animated_sprite_2d_animation_looped():
+	print('looped')
 	if is_respawning:
 		is_respawning = false
-		animated_sprite_2d.animation
-
-
-func _on_animated_sprite_2d_animation_finished():
-	spawning = false
