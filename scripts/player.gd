@@ -6,6 +6,7 @@ const SPEED = 300.
 const JUMP_VELOCITY = -600.0
 const JUMP_EXTEND_DELTA = 0.15
 const COYOTE_TIME = 8
+const PUSH = 200
 
 @onready var collision_shape_2d = $CollisionShape2D
 @onready var animated_sprite_2d = $AnimatedSprite2D
@@ -21,6 +22,8 @@ var coyote_counter : int = 0
 var is_dead = false
 var is_respawning = false
 var should_show_after_death = false
+var spawning = false
+var pushing = false
 
 func jump(delta):
 	jump_extend_counter += delta
@@ -28,6 +31,10 @@ func jump(delta):
 
 func clear():
 	get_tree().call_group("blocks", "queue_free")
+
+func _ready():
+	#spawning = true
+	animated_sprite_2d.play("spawn")
 
 func _process(_delta):
 	#emit_signal("player_pos_signal", position)
@@ -37,13 +44,18 @@ func _process(_delta):
 		respawn()
 
 func _physics_process(delta):
-	print(animated_sprite_2d.animation)
+	#print(animated_sprite_2d.animation)
+	if spawning:
+		return
 	var cannot_move = is_dead or is_respawning
 	if not is_respawning:
 		should_show_after_death = false
-	#animations
-	if (velocity.x > 1 || velocity.x < -1):
-		animated_sprite_2d.animation = "running"
+	#animations	
+	if (get_real_velocity().x > 0 || get_real_velocity().x < 0) and is_on_floor():
+		if pushing:
+			animated_sprite_2d.animation = "push"
+		else:
+			animated_sprite_2d.animation = "running"
 	elif is_respawning:
 		if should_show_after_death:
 			show()
@@ -52,7 +64,7 @@ func _physics_process(delta):
 		else:
 			should_show_after_death = true
 		animated_sprite_2d.animation = "respawn"
-	else:
+	elif is_on_floor():
 		animated_sprite_2d.animation = "idle"
 		
 	
@@ -98,12 +110,27 @@ func _physics_process(delta):
 		
 	animated_sprite_2d.flip_h = is_left
 	
+	pushing = false
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
 		if collision:
 			var collider = collision.get_collider()
 			if collider is HazardTile or collider is Hazard:
 				die()
+			if collider is RigidBody2D:
+				var normal = collision.get_normal()
+				if normal.y != 0: return
+				#var new_v = Vector2(PUSH * (-1 if is_left else 1), 0)
+				#print('push @ ' + str(collider)+ str(velocity) + str(new_v))
+				var new_x = PUSH * (-1 if is_left else 1)
+				collider.linear_velocity.x = new_x
+				#print(normal)
+				#if normal.x < 1: return
+				var force = -normal * PUSH
+				pushing = true
+				animated_sprite_2d.animation = "push"
+				#collider.apply_central_impulse(force)
+				#collider.apply_central_force(force)
 
 func stop_moving():
 	velocity = Vector2(0,0)
@@ -132,3 +159,7 @@ func _on_animated_sprite_2d_animation_looped():
 	if is_respawning:
 		is_respawning = false
 		animated_sprite_2d.animation
+
+
+func _on_animated_sprite_2d_animation_finished():
+	spawning = false
