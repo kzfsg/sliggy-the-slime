@@ -67,9 +67,9 @@ func _physics_process(delta):
 	#animations	
 	if get_real_velocity().x != 0 and is_on_floor():
 		if pushing:
-			animated_sprite_2d.animation = "push"
+			animated_sprite_2d.play("push")
 		else:
-			animated_sprite_2d.animation = "running"
+			animated_sprite_2d.play("running")
 	#delay enabling collision to the second frame so it doesn't clip the spawned block
 	elif is_respawning:
 		if should_show_after_death:
@@ -81,7 +81,7 @@ func _physics_process(delta):
 		animated_sprite_2d.play("respawn")
 		return
 	elif is_on_floor():
-		animated_sprite_2d.animation = "idle"
+		animated_sprite_2d.play("idle")
 	if not is_on_floor() and not cannot_move and Input.is_action_just_pressed("jump") and coyote_counter > 0:
 		jump(delta)
 	
@@ -92,7 +92,7 @@ func _physics_process(delta):
 		if not cannot_move and Input.is_action_just_pressed("jump"):
 			jump(delta)
 	else:
-		animated_sprite_2d.animation = "falling"
+		animated_sprite_2d.play("falling")
 		# Coyote Time
 		if coyote_counter > 0:
 			coyote_counter -= 1
@@ -104,7 +104,7 @@ func _physics_process(delta):
 			# Add the gravity.
 			if not is_dead:
 				velocity.y += gravity * delta
-				animated_sprite_2d.animation = "falling"
+				animated_sprite_2d.play("falling")
 
 	if not cannot_move:
 		var direction = Input.get_axis("left", "right")
@@ -140,7 +140,7 @@ func _physics_process(delta):
 				#if normal.x < 1: return
 				#var force = -normal * PUSH
 				pushing = true
-				animated_sprite_2d.animation = "push"
+				animated_sprite_2d.play("push")
 				#collider.apply_central_impulse(force)
 				#collider.apply_central_force(force)
 

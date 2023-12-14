@@ -439,11 +439,11 @@ texture = ExtResource("2_yvoxd")
 layer_0/tile_data = PackedInt32Array(786435, 196609, 14, 786436, 196609, 14, 524288, 196609, 1879048206, 458752, 196609, 1879048206, 393216, 196609, 1879048206, 458758, 196609, 268435470, 458759, 196609, 268435470, 458760, 196609, 268435470, 458761, 196609, 268435470, 196620, 196609, 268435470, 65550, 196609, 536870926, 196624, 196609, 268435470, 655374, 196609, 268435470, 655373, 196609, 268435470)
 
 [node name="player" parent="level_holder" index="3"]
-position = Vector2(45, 601)
+position = Vector2(43, 602)
 total_lives = 2
 
 [node name="AnimatedSprite2D" parent="level_holder/player" index="0"]
-animation = &"push"
+animation = &"idle"
 
 [node name="death_player" parent="level_holder" index="4"]
 position = Vector2(-203, -41)
