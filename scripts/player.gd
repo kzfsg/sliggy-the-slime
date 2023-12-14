@@ -40,7 +40,7 @@ func _ready():
 	if show_vat_spawn:
 		spawning = true
 		animated_sprite_2d.play("spawn")
-		lives = total_lives
+	lives = total_lives
 
 func _process(_delta):
 	if spawning:

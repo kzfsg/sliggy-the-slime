@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
-const SPEED = 100
+const SPEED = 75
+const FOLLOW_SPEED = 125
 const DASH_SPEED = 250
 const DASH_DIST = 200
 
@@ -9,10 +10,10 @@ const DASH_DIST = 200
 
 var is_left = true
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-
-enum state {walk, dash, freeze}
+enum state {walk, dash, freeze, follow, dead}
 var curr_state = state.walk
 var dash_direction = 1
+var hp = 2
 
 func _physics_process(delta):
 	var player_pos = player.position
@@ -20,41 +21,54 @@ func _physics_process(delta):
 	var player_dist_x = abs(player_x - position.x)
 	velocity.y += gravity * delta
 	
-	#set direction
-	if player_x < position.x:
-		is_left = true
-	else:
-		is_left = false
 	var direction = (-1 if is_left else 1)
+	
+	#follow or walk
+	if curr_state in [state.follow, state.walk]:
+		if player.position.y < position.y - 50 or player.is_dead:
+			curr_state = state.walk
+		else:
+			curr_state = state.follow
 	
 	#match state
 	match curr_state:
-		state.walk:
-			#position.x += direction * SPEED * delta
-			velocity.x = direction * SPEED
-			ani_sprite.play("walk")
+		state.follow:
+			#set direction
+			if player_x < position.x:
+				is_left = true
+			else:
+				is_left = false
 			ani_sprite.flip_h = is_left
+			ani_sprite.play("run")
+			#position.x += direction * SPEED * delta
+			velocity.x = direction * FOLLOW_SPEED
 			#set state
 			#print("%s %s"%[player_dist_x,abs(player_dist_x - DASH_DIST)])
 			if abs(player_dist_x - DASH_DIST) < 50:
+				direction = (-1 if is_left else 1)
 				trigger_dash(direction)
-			else:
-				curr_state = state.walk
+		state.walk:
+			ani_sprite.flip_h = is_left
+			ani_sprite.play("walk")
+			velocity.x = direction * SPEED
 		state.dash:
 			#position.x += dash_direction * DASH_SPEED * delta
 			velocity.x = dash_direction * DASH_SPEED
 		state.freeze:
 			velocity.x = 0
-			#ani_sprite.stop()
+		state.dead:
+			velocity.x = 0
 			
 	move_and_slide()
-	#
-	#for i in get_slide_collision_count():
-		#var collision = get_slide_collision(i)
-		#if collision:
-			#var collider = collision.get_collider()
-			#if collider is Block:
-				#trigger_attack(collider)
+	
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		if collision:
+			var collider = collision.get_collider()
+			if collider is TileMap:
+				var normal = collision.get_normal()
+				if normal.y == 0:
+					is_left = true if normal.x < 0 else false
 
 
 func trigger_dash(direction):
@@ -78,12 +92,32 @@ func trigger_attack(collider):
 	await ani_sprite.animation_finished
 	collider.queue_free()
 	curr_state = state.walk
+	
+func trigger_hurt():
+	hp -= 1
+	if hp == 0:
+		curr_state = state.dead
+	else:
+		curr_state = state.freeze
+	ani_sprite.play("hurt")
+	await ani_sprite.animation_finished
+	if hp == 0:
+		ani_sprite.play('death')
+		await ani_sprite.animation_finished
+		queue_free()
+		return
+	ani_sprite.play("rest")
+	await ani_sprite.animation_finished
+	curr_state = state.walk
 
 func _on_area_2d_body_entered(body):
-	if body is Player:
+	if body is Player and curr_state != state.dead:
 		player.die()
 	if body is Block:
-		if curr_state == state.dash:
+		if body.position.y < position.y - 50:
+			trigger_hurt()
 			body.queue_free()
-		elif curr_state == state.walk:
+		elif curr_state == state.dash:
+			body.queue_free()
+		elif curr_state == state.walk or curr_state == state.follow:
 			trigger_attack(body)

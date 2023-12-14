@@ -1,13 +1,18 @@
-[gd_scene load_steps=41 format=3 uid="uid://c5b5r032ja270"]
+[gd_scene load_steps=58 format=3 uid="uid://c5b5r032ja270"]
 
 [ext_resource type="PackedScene" uid="uid://ctsxqifl3ubd4" path="res://scenes/level_holder.tscn" id="1_x3tp4"]
 [ext_resource type="Script" path="res://scripts/dr_doofus.gd" id="2_5836j"]
+[ext_resource type="Script" path="res://scripts/level_holder.gd" id="2_xb6nb"]
 [ext_resource type="Texture2D" uid="uid://dq2l8fjigqihr" path="res://sprites/doofus_walk.png" id="3_6yfgi"]
 [ext_resource type="Texture2D" uid="uid://cf7nr6wsgkff5" path="res://sprites/doofus_aggro.png" id="3_hm32j"]
 [ext_resource type="Texture2D" uid="uid://b56yk0t40xq5v" path="res://sprites/doofus_dash.png" id="3_ktpoi"]
 [ext_resource type="Texture2D" uid="uid://dclkr6ejpyncw" path="res://sprites/doofus_attack.png" id="4_racws"]
 [ext_resource type="Texture2D" uid="uid://sts3c6iudjqf" path="res://sprites/doofus_hurt.png" id="5_wicd6"]
 [ext_resource type="Texture2D" uid="uid://ctdnnttqbb8rh" path="res://sprites/doofus_rest.png" id="6_ihwhu"]
+[ext_resource type="Texture2D" uid="uid://dxixvydv472qj" path="res://sprites/doofus_death.png" id="7_c8nkw"]
+[ext_resource type="Texture2D" uid="uid://ck8547yq5iyvf" path="res://sprites/doofus_run.png" id="9_4p816"]
+[ext_resource type="PackedScene" uid="uid://de680tnqylfrj" path="res://scenes/enemy_drone.tscn" id="10_k1mdl"]
+[ext_resource type="PackedScene" uid="uid://c6nqqes4yjqdy" path="res://scenes/block.tscn" id="13_ch3ut"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2gtue"]
 atlas = ExtResource("3_hm32j")
@@ -81,6 +86,30 @@ region = Rect2(188, 0, 38, 48)
 atlas = ExtResource("3_ktpoi")
 region = Rect2(235, 0, 38, 48)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvgr2"]
+atlas = ExtResource("7_c8nkw")
+region = Rect2(0, 0, 35, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0jc78"]
+atlas = ExtResource("7_c8nkw")
+region = Rect2(48, 0, 35, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_62u3t"]
+atlas = ExtResource("7_c8nkw")
+region = Rect2(96, 0, 35, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_olq7e"]
+atlas = ExtResource("7_c8nkw")
+region = Rect2(144, 0, 35, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y1ira"]
+atlas = ExtResource("7_c8nkw")
+region = Rect2(192, 0, 35, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4keh5"]
+atlas = ExtResource("7_c8nkw")
+region = Rect2(240, 0, 35, 48)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_4winh"]
 atlas = ExtResource("5_wicd6")
 region = Rect2(0, 0, 27, 48)
@@ -104,6 +133,30 @@ region = Rect2(98, 0, 27, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_i41ia"]
 atlas = ExtResource("6_ihwhu")
 region = Rect2(147, 0, 27, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nummm"]
+atlas = ExtResource("9_4p816")
+region = Rect2(0, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hbn5e"]
+atlas = ExtResource("9_4p816")
+region = Rect2(48, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n6p6v"]
+atlas = ExtResource("9_4p816")
+region = Rect2(96, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6rqnv"]
+atlas = ExtResource("9_4p816")
+region = Rect2(144, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gf6j5"]
+atlas = ExtResource("9_4p816")
+region = Rect2(192, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q2buo"]
+atlas = ExtResource("9_4p816")
+region = Rect2(240, 0, 32, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kylf8"]
 atlas = ExtResource("3_6yfgi")
@@ -202,6 +255,29 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_lvgr2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0jc78")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_62u3t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_olq7e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y1ira")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4keh5")
+}],
+"loop": false,
+"name": &"death",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_4winh")
 }, {
 "duration": 1.0,
@@ -213,7 +289,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_pww5x")
 }],
-"loop": true,
+"loop": false,
 "name": &"hurt",
 "speed": 5.0
 }, {
@@ -233,6 +309,29 @@ animations = [{
 "loop": false,
 "name": &"rest",
 "speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nummm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hbn5e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n6p6v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6rqnv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gf6j5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q2buo")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -264,13 +363,15 @@ size = Vector2(39, 100)
 [node name="boss_1" type="Node"]
 
 [node name="level_holder" parent="." instance=ExtResource("1_x3tp4")]
+script = ExtResource("2_xb6nb")
 
 [node name="all_tilemap" parent="level_holder" index="2"]
 position = Vector2(-3, -32)
-layer_0/tile_data = PackedInt32Array(1179647, 196613, 2, 1114111, 196613, 2, 1048575, 196613, 2, 983039, 196613, 2, 917503, 196613, 2, 851967, 196613, 2, 786431, 196613, 2, 720895, 196613, 2, 655359, 196613, 2, 589823, 196613, 2, 524287, 196613, 2, 458751, 196613, 2, 393215, 196613, 2, 327679, 196613, 2, 262143, 196613, 2, 196607, 196613, 2, 131071, 196613, 2, 1835055, 131077, 1, 1835054, 131077, 1, 1835053, 131077, 1, 1835052, 131077, 1, 1835051, 131077, 1, 1835050, 131077, 1, 1835049, 131077, 1, 1835048, 131077, 1, 1835047, 131077, 1, 1835046, 131077, 1, 1835045, 131077, 1, 1835044, 131077, 1, 1835043, 131077, 1, 1835042, 131077, 1, 1835041, 131077, 1, 1835040, 131077, 1, 1835039, 131077, 1, 1835038, 131077, 1, 1835037, 131077, 1, 1835036, 131077, 1, 1835035, 131077, 1, 1835034, 131077, 1, 1835033, 131077, 1, 1835032, 131077, 1, 1835031, 131077, 1, 1835030, 131077, 1, 1835029, 131077, 1, 1835028, 131077, 1, 1835027, 131077, 1, 1835026, 131077, 1, 1835025, 131077, 1, 1835024, 131077, 1, 1835023, 131077, 1, 1835022, 131077, 1, 1835021, 131077, 1, 1835020, 131077, 1, 1835019, 131077, 1, 1835018, 131077, 1, 1835017, 131077, 1, 1835016, 131077, 1, 1835015, 131077, 1, 1835014, 131077, 1, 1835013, 131077, 1, 1835012, 131077, 1, 1835011, 131077, 1, 1835010, 131077, 1, 1835008, 131077, 1, 1769520, 65541, 2, 1703984, 65541, 2, 1638448, 65541, 2, 1572912, 65541, 2, 1507376, 65541, 2, 1441840, 65541, 2, 1376304, 65541, 2, 1310768, 65541, 2, 1245232, 65541, 2, 1179696, 65541, 2, 1114160, 65541, 2, 1048624, 65541, 2, 983088, 65541, 2, 917552, 65541, 2, 852016, 65541, 2, 786480, 65541, 2, 720944, 65541, 2, 655408, 65541, 2, 589872, 65541, 2, 524336, 65541, 2, 458800, 65541, 2, 393264, 65541, 2, 327728, 65541, 2, 65584, 65541, 2, 131120, 65541, 2, 48, 131077, 3, 47, 131077, 3, 46, 131077, 3, 45, 131077, 3, 44, 131077, 3, 43, 131077, 3, 42, 131077, 3, 41, 131077, 3, 40, 131077, 3, 39, 131077, 3, 38, 131077, 3, 37, 131077, 3, 36, 131077, 3, 35, 131077, 3, 34, 131077, 3, 33, 131077, 3, 32, 131077, 3, 31, 131077, 3, 30, 131077, 3, 29, 131077, 3, 28, 131077, 3, 27, 131077, 3, 26, 131077, 3, 25, 131077, 3, 24, 131077, 3, 23, 131077, 3, 22, 131077, 3, 21, 131077, 3, 20, 131077, 3, 19, 131077, 3, 18, 131077, 3, 17, 131077, 3, 16, 131077, 3, 15, 131077, 3, 14, 131077, 3, 13, 131077, 3, 12, 131077, 3, 11, 131077, 3, 10, 131077, 3, 9, 131077, 3, 8, 131077, 3, 7, 131077, 3, 6, 131077, 3, 5, 131077, 3, 4, 131077, 3, 3, 131077, 3, 2, 131077, 3, 196656, 65541, 2, 262192, 65541, 2, 1835009, 131077, 1, 1769471, 196613, 2, 1835007, 196613, 2, 1703935, 196613, 2, 1638399, 196613, 2, 1572863, 196613, 2, 1507327, 131077, 1, 1441792, 131077, 1, 1441793, 131077, 1, 1507329, 196613, 2, 1572865, 196613, 2, 1638401, 196613, 2, 1703937, 196613, 2, 1769473, 196613, 2, 1900543, 65541, 1, 1769472, 131077, 2, 1703936, 131077, 2, 1638400, 131077, 2, 1572864, 131077, 2, 1507328, 131077, 2)
+layer_0/tile_data = PackedInt32Array(1179647, 196613, 2, 1114111, 196613, 2, 1048575, 196613, 2, 983039, 196613, 2, 917503, 196613, 2, 851967, 196613, 2, 786431, 196613, 2, 720895, 196613, 2, 655359, 196613, 2, 589823, 196613, 2, 524287, 196613, 2, 458751, 196613, 2, 393215, 196613, 2, 327679, 196613, 2, 262143, 196613, 2, 196607, 196613, 2, 131071, 196613, 2, 1835055, 131077, 1, 1835054, 131077, 1, 1835053, 131077, 1, 1835052, 131077, 1, 1835051, 131077, 1, 1835050, 131077, 1, 1835049, 131077, 1, 1835048, 131077, 1, 1835047, 131077, 1, 1835046, 131077, 1, 1835045, 131077, 1, 1835044, 131077, 1, 1835043, 131077, 1, 1835042, 131077, 1, 1835041, 131077, 1, 1835040, 131077, 1, 1835039, 131077, 1, 1835038, 131077, 1, 1835037, 131077, 1, 1835036, 131077, 1, 1835035, 131077, 1, 1835034, 131077, 1, 1835033, 131077, 1, 1835032, 131077, 1, 1835031, 131077, 1, 1835030, 131077, 1, 1835029, 131077, 1, 1835028, 131077, 1, 1835027, 131077, 1, 1835026, 131077, 1, 1835025, 131077, 1, 1835024, 131077, 1, 1835023, 131077, 1, 1835022, 131077, 1, 1835021, 131077, 1, 1835020, 131077, 1, 1835019, 131077, 1, 1835018, 131077, 1, 1835017, 131077, 1, 1835016, 131077, 1, 1835015, 131077, 1, 1835014, 131077, 1, 1835013, 131077, 1, 1835012, 131077, 1, 1835011, 131077, 1, 1835010, 131077, 1, 1835008, 131077, 1, 1769520, 65541, 2, 1703984, 65541, 2, 1638448, 65541, 2, 1572912, 65541, 2, 1507376, 65541, 2, 1441840, 65541, 2, 1376304, 65541, 2, 1310768, 65541, 2, 1245232, 65541, 2, 1179696, 65541, 2, 1114160, 65541, 2, 1048624, 65541, 2, 983088, 65541, 2, 917552, 65541, 2, 852016, 65541, 2, 786480, 65541, 2, 720944, 65541, 2, 655408, 65541, 2, 589872, 65541, 2, 524336, 65541, 2, 458800, 65541, 2, 393264, 65541, 2, 327728, 65541, 2, 65584, 65541, 2, 131120, 65541, 2, 48, 131077, 3, 47, 131077, 3, 46, 131077, 3, 45, 131077, 3, 44, 131077, 3, 43, 131077, 3, 42, 131077, 3, 41, 131077, 3, 40, 131077, 3, 39, 131077, 3, 38, 131077, 3, 37, 131077, 3, 36, 131077, 3, 35, 131077, 3, 34, 131077, 3, 33, 131077, 3, 32, 131077, 3, 31, 131077, 3, 30, 131077, 3, 29, 131077, 3, 28, 131077, 3, 27, 131077, 3, 26, 131077, 3, 25, 131077, 3, 24, 131077, 3, 23, 131077, 3, 22, 131077, 3, 21, 131077, 3, 20, 131077, 3, 19, 131077, 3, 18, 131077, 3, 17, 131077, 3, 16, 131077, 3, 15, 131077, 3, 14, 131077, 3, 13, 131077, 3, 12, 131077, 3, 11, 131077, 3, 10, 131077, 3, 9, 131077, 3, 8, 131077, 3, 7, 131077, 3, 6, 131077, 3, 5, 131077, 3, 4, 131077, 3, 3, 131077, 3, 2, 131077, 3, 196656, 65541, 2, 262192, 65541, 2, 1835009, 131077, 1, 1769471, 196613, 2, 1835007, 196613, 2, 1703935, 196613, 2, 1638399, 196613, 2, 1572863, 196613, 2, 1507327, 131077, 1, 1441792, 131077, 1, 1441793, 131077, 1, 1507329, 196613, 2, 1572865, 196613, 2, 1638401, 196613, 2, 1703937, 196613, 2, 1769473, 196613, 2, 1900543, 65541, 1, 1769472, 131077, 2, 1703936, 131077, 2, 1638400, 131077, 2, 1572864, 131077, 2, 1507328, 131077, 2, 1441802, 131077, 9, 1441803, 131077, 9, 1441804, 131077, 9, 1441805, 131077, 9, 1441806, 131077, 9, 1441801, 65541, 9, 1441807, 196613, 9, 851991, 65541, 6, 917527, 65541, 6, 983063, 65541, 6, 1048599, 65541, 6, 1114135, 65541, 6, 1179671, 65541, 6, 1245207, 65541, 6, 1310743, 65541, 6, 1376279, 65541, 6, 1441815, 65541, 6, 1507351, 65541, 6, 1572887, 65541, 6, 1638423, 65541, 6, 1703959, 65541, 6, 1769495, 65541, 6)
 
 [node name="player" parent="level_holder" index="3"]
 position = Vector2(20, 470)
+total_lives = 5
 
 [node name="death_player" parent="level_holder" index="4"]
 position = Vector2(-75, -96)
@@ -294,8 +395,10 @@ script = ExtResource("2_5836j")
 position = Vector2(1, -19)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_07e7q")
-animation = &"attack"
+animation = &"death"
 autoplay = "walk"
+frame = 5
+frame_progress = 1.0
 
 [node name="Area2D" type="Area2D" parent="level_holder/dr_doofus"]
 position = Vector2(-0.5, -1.5)
@@ -307,6 +410,12 @@ shape = SubResource("RectangleShape2D_558kd")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="level_holder/dr_doofus"]
 position = Vector2(-0.5, -0.5)
 shape = SubResource("RectangleShape2D_558kd")
+
+[node name="enemy_drone" parent="level_holder" instance=ExtResource("10_k1mdl")]
+position = Vector2(295, 381)
+
+[node name="block" parent="." instance=ExtResource("13_ch3ut")]
+position = Vector2(289, 464)
 
 [connection signal="body_entered" from="level_holder/dr_doofus/Area2D" to="level_holder/dr_doofus" method="_on_area_2d_body_entered"]
 
