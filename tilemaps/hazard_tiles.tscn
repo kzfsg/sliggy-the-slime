@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://un0j7l2upmv2"]
 
-[ext_resource type="Texture2D" uid="uid://cb6g6sbscj8fs" path="res://Dungeon Tile Set.png" id="1_mbcl7"]
-[ext_resource type="Script" path="res://scripts/hazard_tiles.gd" id="2_i5k8o"]
+[ext_resource type="Texture2D" uid="uid://cb6g6sbscj8fs" path="res://Dungeon Tile Set.png" id="1_mfvti"]
+[ext_resource type="Script" path="res://scripts/hazard_tiles.gd" id="2_d1w1c"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rjhun"]
-texture = ExtResource("1_mbcl7")
+texture = ExtResource("1_mfvti")
 1:1/0 = 0
 1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:1/0/physics_layer_0/angular_velocity = 0.0
@@ -387,7 +387,7 @@ texture = ExtResource("1_mbcl7")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pq02s"]
 resource_name = "Spikes"
-texture = ExtResource("1_mbcl7")
+texture = ExtResource("1_mfvti")
 1:14/0 = 0
 1:14/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:14/0/physics_layer_0/angular_velocity = 0.0
@@ -441,4 +441,4 @@ texture_filter = 1
 scale = Vector2(3, 3)
 tile_set = SubResource("TileSet_5aaak")
 format = 2
-script = ExtResource("2_i5k8o")
+script = ExtResource("2_d1w1c")

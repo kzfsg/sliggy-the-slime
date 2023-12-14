@@ -422,10 +422,11 @@ texture_region_size = Vector2i(32, 32)
 
 [sub_resource type="TileSet" id="TileSet_hi16i"]
 tile_size = Vector2i(32, 32)
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 3
+physics_layer_0/collision_mask = 3
 sources/0 = SubResource("TileSetAtlasSource_8jhfa")
 
-[node name="level_1" type="Node"]
+[node name="level_2" type="Node"]
 
 [node name="level_holder" parent="." instance=ExtResource("1_4gyi4")]
 
@@ -434,23 +435,25 @@ z_index = -10
 texture_filter = 1
 texture = ExtResource("2_yvoxd")
 
-[node name="level_tiles" parent="level_holder" index="1"]
-layer_0/tile_data = PackedInt32Array(458758, 327681, 14, 786435, 131073, 14, 786436, 196609, 14, 458752, 131073, 1342177294, 393216, 131073, 1342177294, 458761, 327681, 14, 458760, 327681, 14, 458759, 262145, 14, 196620, 131073, 14, 327693, 393217, 805306382, 327694, 262145, 805306382, 655374, 327680, 13, 65550, 327681, 805306382, 196624, 262145, 14, 655373, 196609, 14)
+[node name="hazard_tiles" parent="level_holder" index="1"]
+layer_0/tile_data = PackedInt32Array(786435, 196609, 14, 786436, 196609, 14, 524288, 196609, 1879048206, 458752, 196609, 1879048206, 393216, 196609, 1879048206, 458758, 196609, 268435470, 458759, 196609, 268435470, 458760, 196609, 268435470, 458761, 196609, 268435470, 196620, 196609, 268435470, 65550, 196609, 536870926, 196624, 196609, 268435470, 655374, 196609, 268435470, 655373, 196609, 268435470)
 
-[node name="player" parent="level_holder" index="2"]
-position = Vector2(28, 600)
+[node name="player" parent="level_holder" index="3"]
+position = Vector2(45, 601)
+total_lives = 7
+show_vat_spawn = true
 
-[node name="death_player" parent="level_holder" index="3"]
+[node name="death_player" parent="level_holder" index="4"]
 position = Vector2(-203, -41)
 
-[node name="endpoint" parent="level_holder" index="4"]
+[node name="endpoint" parent="level_holder" index="5"]
 z_index = 1
 position = Vector2(1128, 396)
 
-[node name="spawnpoint" parent="level_holder" index="5"]
-position = Vector2(28, 598)
+[node name="spawnpoint" parent="level_holder" index="6"]
+position = Vector2(22, 600)
 
-[node name="checkpoint" parent="level_holder" index="6"]
+[node name="checkpoint" parent="level_holder" index="7"]
 z_index = -1
 position = Vector2(505, 147)
 scale = Vector2(1.5, 1.5)
@@ -567,7 +570,7 @@ texture = ExtResource("12_e2ob5")
 
 [node name="Capsule5" type="Sprite2D" parent="level_holder/level_objects"]
 z_index = -4
-position = Vector2(31.1771, 593.75)
+position = Vector2(33, 594)
 scale = Vector2(1.23958, 1.23958)
 texture = ExtResource("14_npw3l")
 
@@ -594,3 +597,4 @@ texture = ExtResource("16_etbbi")
 flip_h = true
 
 [editable path="level_holder"]
+[editable path="level_holder/player"]

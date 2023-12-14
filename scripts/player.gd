@@ -10,9 +10,9 @@ const PUSH = 200
 
 @onready var collision_shape_2d = $CollisionShape2D
 @onready var animated_sprite_2d = $AnimatedSprite2D
-@onready var hazard_tiles = $"../hazard_tiles"
 @onready var death_player = $"../death_player"
 @onready var spawnpoint = $"../spawnpoint"
+@onready var lives_indicator = $lives_indicator
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -24,7 +24,10 @@ var is_respawning = false
 var should_show_after_death = false
 var spawning = false
 var pushing = false
-var lives = 0
+@export var total_lives: int
+var lives: int
+@export var show_vat_spawn: bool = false
+@export var limited_lives: bool = true
 
 func jump(delta):
 	jump_extend_counter += delta
@@ -34,8 +37,10 @@ func clear():
 	get_tree().call_group("blocks", "queue_free")
 
 func _ready():
-	spawning = true
-	animated_sprite_2d.play("spawn")
+	if show_vat_spawn:
+		spawning = true
+		animated_sprite_2d.play("spawn")
+		lives = total_lives
 
 func _process(_delta):
 	if spawning:
@@ -51,10 +56,12 @@ func _physics_process(delta):
 	if not is_respawning:
 		should_show_after_death = false
 	if spawning:
+		animated_sprite_2d.show()
+		collision_shape_2d.disabled = false
+		animated_sprite_2d.play("spawn")
 		return
 	#animations	
 	if get_real_velocity().x != 0 and is_on_floor():
-		print('not here')
 		if pushing:
 			animated_sprite_2d.animation = "push"
 		else:
@@ -62,7 +69,7 @@ func _physics_process(delta):
 	#delay enabling collision to the second frame so it doesn't clip the spawned block
 	elif is_respawning:
 		if should_show_after_death:
-			show()
+			animated_sprite_2d.show()
 			should_show_after_death = false
 			collision_shape_2d.disabled = false
 		else:
@@ -129,7 +136,7 @@ func _physics_process(delta):
 				collider.linear_velocity.x = new_x
 				#print(normal)
 				#if normal.x < 1: return
-				var force = -normal * PUSH
+				#var force = -normal * PUSH
 				pushing = true
 				animated_sprite_2d.animation = "push"
 				#collider.apply_central_impulse(force)
@@ -139,32 +146,38 @@ func stop_moving():
 	velocity = Vector2(0,0)
 
 func die():
-	#if is_dead: return
+	if is_dead: return
 	#collision_shape_2d.set_deferred("disabled",true)
+	lives -= 1
 	collision_shape_2d.disabled = true
 	stop_moving()
 	is_dead = true
-	hide()
+	animated_sprite_2d.hide()
+	if limited_lives:
+		lives_indicator.play(lives)
 	death_player.play_animation(position)
 	#position = spawnpoint.position
 
 func respawn():
-	print('respawn')
 	stop_moving()
 	position = spawnpoint.position
 	#collision_shape_2d.disabled = false
 	is_dead = false
-	is_respawning = true
+	if lives == 0 and limited_lives:
+		lives = total_lives
+		clear()
+		spawning = true
+	else:
+		is_respawning = true
 
 func _on_respawn_pressed():
 	respawn()
 
 func _on_animated_sprite_2d_animation_finished():
-	print('finished')
 	if spawning:
 		spawning = false
 
 func _on_animated_sprite_2d_animation_looped():
-	print('looped')
 	if is_respawning:
 		is_respawning = false
+		

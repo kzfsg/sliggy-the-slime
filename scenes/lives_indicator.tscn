@@ -1,0 +1,89 @@
+[gd_scene load_steps=4 format=3 uid="uid://1h6q23062vgo"]
+
+[ext_resource type="Script" path="res://scripts/lives_indicator.gd" id="1_nuj2q"]
+
+[sub_resource type="Animation" id="Animation_rxi6w"]
+resource_name = "health_drop"
+length = 1.2
+step = 0.02
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("old:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.18, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-20, 0), Vector2(-20, -20), Vector2(-20, 30)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("new:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.18, 0.5, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-20, -40), Vector2(-20, 10), Vector2(-20, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("old:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.18, 0.5),
+"transitions": PackedFloat32Array(1, 2.8, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("new:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.18, 0.5),
+"transitions": PackedFloat32Array(0.358423, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_udhyt"]
+_data = {
+"health_drop": SubResource("Animation_rxi6w")
+}
+
+[node name="lives_indicator" type="Node2D"]
+script = ExtResource("1_nuj2q")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_udhyt")
+}
+
+[node name="old" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = -20.0
+offset_top = 30.0
+offset_right = 20.0
+offset_bottom = 53.0
+size_flags_horizontal = 4
+text = "old"
+horizontal_alignment = 1
+
+[node name="new" type="Label" parent="."]
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+size_flags_horizontal = 4
+text = "new"
+horizontal_alignment = 1
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

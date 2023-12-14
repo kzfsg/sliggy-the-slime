@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://dsyqubot4iron"]
+[gd_scene load_steps=50 format=3 uid="uid://dsyqubot4iron"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_8krbp"]
 [ext_resource type="Texture2D" uid="uid://dh11hdyuyqpn8" path="res://sprites/sligga_base.png" id="1_cq0b4"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dlg333dl5xd6x" path="res://sprites/sliggy_respawn.png" id="4_2royd"]
 [ext_resource type="Texture2D" uid="uid://3w3i4ctkkl48" path="res://sprites/sliggy_push.png" id="5_kqsfs"]
 [ext_resource type="Texture2D" uid="uid://blbsbaqt3jksp" path="res://sprites/sliggy_spawn.png" id="7_i7c4u"]
+[ext_resource type="PackedScene" uid="uid://1h6q23062vgo" path="res://scenes/lives_indicator.tscn" id="9_xh1q6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ds0yc"]
 atlas = ExtResource("2_dh25v")
@@ -335,8 +336,17 @@ position = Vector2(1.42933, -1.30611)
 shape = SubResource("RectangleShape2D_8aeph")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(2.65821, 0.294426)
+position = Vector2(3.77359, 0)
 zoom = Vector2(1.5, 1.5)
+limit_left = -50
+limit_top = 0
+limit_right = 1150
+limit_bottom = 670
+
+[node name="lives_indicator" parent="." instance=ExtResource("9_xh1q6")]
+visible = false
+position = Vector2(-3.77359, -184)
+scale = Vector2(3, 3)
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]
