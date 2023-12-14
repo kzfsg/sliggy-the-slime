@@ -380,13 +380,10 @@ z_index = -10
 texture_filter = 1
 texture = ExtResource("2_mp01r")
 
-[node name="level_tiles" parent="level_holder" index="1"]
-layer_0/tile_data = PackedInt32Array(458758, 327681, 14, 786435, 131073, 14, 786436, 196609, 14, 458752, 131073, 1342177294, 393216, 131073, 1342177294, 458761, 327681, 14, 458760, 327681, 14, 458759, 262145, 14, 196620, 131073, 14, 327693, 393217, 805306382, 327694, 262145, 805306382, 655374, 327680, 13, 65550, 327681, 805306382, 196624, 262145, 14, 655373, 196609, 14)
-
-[node name="player" parent="level_holder" index="2"]
+[node name="player" parent="level_holder" index="3"]
 position = Vector2(105, 574)
 
-[node name="endpoint" parent="level_holder" index="4"]
+[node name="endpoint" parent="level_holder" index="5"]
 z_index = 1
 position = Vector2(1128, 396)
 

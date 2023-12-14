@@ -257,7 +257,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5awv4")
 }],
-"loop": true,
+"loop": false,
 "name": &"respawn",
 "speed": 12.0
 }, {
@@ -327,9 +327,8 @@ texture_filter = 1
 position = Vector2(6.94843, -26.8259)
 scale = Vector2(0.699018, 0.699018)
 sprite_frames = SubResource("SpriteFrames_loumv")
-animation = &"idle"
+animation = &"falling"
 autoplay = "idle"
-frame_progress = 0.168963
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1.42933, -1.30611)

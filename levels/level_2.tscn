@@ -440,8 +440,10 @@ layer_0/tile_data = PackedInt32Array(786435, 196609, 14, 786436, 196609, 14, 524
 
 [node name="player" parent="level_holder" index="3"]
 position = Vector2(45, 601)
-total_lives = 7
-show_vat_spawn = true
+total_lives = 2
+
+[node name="AnimatedSprite2D" parent="level_holder/player" index="0"]
+animation = &"push"
 
 [node name="death_player" parent="level_holder" index="4"]
 position = Vector2(-203, -41)

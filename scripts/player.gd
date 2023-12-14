@@ -36,11 +36,13 @@ func jump(delta):
 func clear():
 	get_tree().call_group("blocks", "queue_free")
 
-func _ready():
-	if show_vat_spawn:
-		spawning = true
-		animated_sprite_2d.play("spawn")
-	lives = total_lives
+#func _ready():
+	#if show_vat_spawn:
+		#spawning = true
+		#animated_sprite_2d.play("spawn")
+		#await animated_sprite_2d.animation_finished
+		#spawning = false
+	#lives = total_lives
 
 func _process(_delta):
 	if spawning:
@@ -52,6 +54,7 @@ func _process(_delta):
 		respawn()
 
 func _physics_process(delta):
+	print(is_dead,is_respawning,spawning)
 	var cannot_move = is_dead or is_respawning
 	if not is_respawning:
 		should_show_after_death = false
@@ -103,8 +106,6 @@ func _physics_process(delta):
 				animated_sprite_2d.animation = "falling"
 
 	if not cannot_move:
-		# Get the input direction and handle the movement/deceleration.
-		# As good practice, you should replace UI actions with custom gameplay actions.
 		var direction = Input.get_axis("left", "right")
 		if direction:
 			velocity.x = direction * SPEED
@@ -176,8 +177,5 @@ func _on_respawn_pressed():
 func _on_animated_sprite_2d_animation_finished():
 	if spawning:
 		spawning = false
-
-func _on_animated_sprite_2d_animation_looped():
 	if is_respawning:
 		is_respawning = false
-		
