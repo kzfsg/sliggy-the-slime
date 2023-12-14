@@ -1,9 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://dd83w1nqwotv5"]
+[gd_scene load_steps=32 format=3 uid="uid://dd83w1nqwotv5"]
 
 [ext_resource type="PackedScene" uid="uid://ctsxqifl3ubd4" path="res://scenes/level_holder.tscn" id="1_4gyi4"]
 [ext_resource type="Texture2D" uid="uid://c6m4anixt378t" path="res://lab-tileset/1 Tiles/full_tile.png" id="2_mb1vg"]
 [ext_resource type="Texture2D" uid="uid://v02xphtccaxt" path="res://lab-tileset/2 Background/Day/6.png" id="2_yvoxd"]
-[ext_resource type="Texture2D" uid="uid://b1jnr3ll4ptpf" path="res://lab-tileset/3 Objects/Tube_07.png" id="3_8yn5o"]
 [ext_resource type="Texture2D" uid="uid://hlqytuivmwnn" path="res://lab-tileset/3 Objects/Door3.png" id="6_jrqbt"]
 [ext_resource type="Texture2D" uid="uid://7664xa8dfvoe" path="res://lab-tileset/3 Objects/Tube_06.png" id="8_4yck0"]
 [ext_resource type="Texture2D" uid="uid://b4x8p4togcfbq" path="res://lab-tileset/3 Objects/Tube_14.png" id="9_28nj1"]
@@ -14,7 +13,22 @@
 [ext_resource type="Texture2D" uid="uid://dy3yf413vl3ig" path="res://lab-tileset/3 Objects/Web4.png" id="15_78ige"]
 [ext_resource type="PackedScene" uid="uid://ciyyhrkdwpplf" path="res://scenes/camera_prop.tscn" id="16_00oa7"]
 [ext_resource type="PackedScene" uid="uid://de680tnqylfrj" path="res://scenes/enemy_drone.tscn" id="16_7idgo"]
+[ext_resource type="PackedScene" uid="uid://drdmmvpw6dq8f" path="res://scenes/platform.tscn" id="16_co4dh"]
 [ext_resource type="Texture2D" uid="uid://dfnsok7d1li8j" path="res://lab-tileset/3 Objects/Monitor4.png" id="16_etbbi"]
+[ext_resource type="Texture2D" uid="uid://cmeq80lb18ra7" path="res://lab-tileset/3 Objects/Grass1.png" id="17_pxulr"]
+[ext_resource type="Texture2D" uid="uid://cr5wwqekjw05v" path="res://lab-tileset/4 Animated objects/Platform.png" id="17_tu2u2"]
+[ext_resource type="Texture2D" uid="uid://7t1aq4h8vmbx" path="res://lab-tileset/3 Objects/Monitor1.png" id="18_xariv"]
+[ext_resource type="Texture2D" uid="uid://dbqm5l4a557j5" path="res://lab-tileset/3 Objects/Tube_09.png" id="19_hbbfh"]
+[ext_resource type="Texture2D" uid="uid://dfjq80tpumlw3" path="res://lab-tileset/3 Objects/Tube_13.png" id="19_w6wf6"]
+[ext_resource type="Texture2D" uid="uid://cwujg4n7c72k6" path="res://lab-tileset/3 Objects/Tube_10.png" id="20_68h6i"]
+[ext_resource type="Texture2D" uid="uid://dfp5qrmabe7x5" path="res://lab-tileset/3 Objects/Grass2.png" id="22_prds4"]
+[ext_resource type="Texture2D" uid="uid://ddsd7i1uh8kdr" path="res://lab-tileset/3 Objects/Grass4.png" id="23_45xx1"]
+[ext_resource type="Texture2D" uid="uid://cyu84mra4b4y6" path="res://lab-tileset/3 Objects/Monitor5.png" id="24_3rua8"]
+[ext_resource type="Texture2D" uid="uid://c1bfk5gdrhv2o" path="res://lab-tileset/3 Objects/Table3.png" id="25_pugjh"]
+[ext_resource type="Texture2D" uid="uid://dymccfjl0764w" path="res://lab-tileset/3 Objects/Chair1.png" id="26_q3cff"]
+[ext_resource type="Texture2D" uid="uid://cvv864vaddou3" path="res://lab-tileset/3 Objects/Grass5.png" id="27_m851p"]
+[ext_resource type="Texture2D" uid="uid://ct8ldjymmggus" path="res://lab-tileset/3 Objects/Grass3.png" id="28_p64px"]
+[ext_resource type="Texture2D" uid="uid://b0alqn6mb8fre" path="res://lab-tileset/3 Objects/Monitor8.png" id="29_ct54n"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8jhfa"]
 texture = ExtResource("2_mb1vg")
@@ -438,7 +452,7 @@ texture = ExtResource("2_yvoxd")
 layer_0/tile_data = PackedInt32Array(458758, 327681, 14, 786435, 131073, 14, 786436, 196609, 14, 458752, 131073, 1342177294, 393216, 131073, 1342177294, 458761, 327681, 14, 458760, 327681, 14, 458759, 262145, 14, 196620, 131073, 14, 327693, 393217, 805306382, 327694, 262145, 805306382, 655374, 327680, 13, 65550, 327681, 805306382, 196624, 262145, 14, 655373, 196609, 14)
 
 [node name="player" parent="level_holder" index="2"]
-position = Vector2(28, 600)
+position = Vector2(794, 596)
 
 [node name="death_player" parent="level_holder" index="3"]
 position = Vector2(-203, -41)
@@ -460,137 +474,259 @@ texture_filter = 1
 scale = Vector2(1.5, 1.5)
 tile_set = SubResource("TileSet_hi16i")
 format = 2
-layer_0/tile_data = PackedInt32Array(917503, 655360, 0, 851968, 458752, 0, 851969, 65536, 0, 851970, 262144, 0, 851971, 458752, 0, 851974, 1376256, 1, 851975, 262144, 0, 851976, 262144, 0, 851977, 1376256, 1, 851978, 917504, 0, 851979, 1376256, 1, 851980, 458752, 0, 851981, 262144, 0, 851982, 262144, 0, 851983, 1376256, 1, 851984, 458752, 0, 851985, 262144, 0, 851986, 458752, 0, 851987, 1376256, 1, 851988, 262144, 0, 851989, 262144, 0, 851990, 262144, 0, 851991, 1114112, 0, 851992, 458752, 0, 851967, 1048576, 0, 786431, 1048576, 0, 720895, 851968, 0, 655359, 1048576, 0, 589823, 655360, 0, 65535, 1048576, 0, 131071, 1048576, 0, 196607, 851968, 0, 262143, 1048576, 0, 327679, 655360, 0, 393215, 655360, 0, 458751, 851968, 0, 524287, 1048576, 0, 0, 1769472, 0, 1, 720896, 0, 2, 917504, 0, 3, 917504, 0, 4, 720896, 0, 5, 1769472, 0, 6, 917504, 0, 7, 1769472, 0, 8, 720896, 0, 9, 1769472, 0, 10, 720896, 0, 11, 720896, 0, 12, 720896, 0, 13, 917504, 0, 14, 1769472, 0, 15, 1769472, 0, 16, 917504, 0, 17, 1769472, 0, 18, 720896, 0, 19, 917504, 0, 20, 917504, 0, 21, 720896, 0, 22, 720896, 0, 23, 1048576, 0, 24, 1769472, 0, 589824, 1769472, 1, 589825, 1376256, 1, 851972, 262144, 0, 851973, 917504, 0, 720901, 851968, 0, 786437, 1048576, 0, 655365, 655360, 0, 589829, 655360, 0, 524293, 1048576, 0, 458757, 851968, 0, 393221, 851968, 0, 262149, 1114112, 0, 327685, 655360, 0, 589826, 1835008, 1, 262146, 1769472, 1, 262147, 1572864, 1, 262148, 1769472, 1, 524294, 65536, 0, 524295, 262144, 0, 524296, 458752, 0, 524297, 458752, 0, 524298, 786432, 0, 589834, 983040, 0, 655370, 983040, 0, 720906, 1179648, 0, 786442, 983040, 0, 589833, 458752, 1, 589832, 917504, 0, 655367, 720896, 0, 589831, 1114112, 0, 589830, 262144, 1, 720903, 589824, 0, 786440, 589824, 0, 720904, 1245184, 0, 655368, 1245184, 0, 720905, 720896, 0, 786441, 1245184, 1, 786438, 1245184, 0, 720902, 1245184, 1, 786439, 393216, 1, 655366, 589824, 1, 655369, 589824, 1, 458762, 1179648, 0, 393226, 983040, 0, 327690, 1179648, 0, 262154, 1114112, 0, 262155, 458752, 0, 262156, 458752, 0, 262157, 458752, 0, 262158, 458752, 0, 262159, 458752, 0, 262160, 458752, 0, 262163, 1179648, 0, 327699, 1179648, 0, 393235, 1179648, 0, 458771, 983040, 0, 589839, 786432, 0, 655375, 983040, 0, 524307, 983040, 0, 524306, 458752, 0, 524305, 262144, 0, 524304, 458752, 0, 524303, 458752, 0, 524300, 393216, 0, 720911, 1179648, 0, 720910, 262144, 0, 720909, 458752, 0, 720908, 851968, 0, 589836, 851968, 0, 655372, 1048576, 0, 786455, 1048576, 0, 720919, 851968, 0, 655383, 851968, 0, 589847, 1048576, 0, 393239, 1048576, 0, 327703, 851968, 0, 65559, 851968, 0, 131095, 851968, 0, 196631, 1048576, 0, 262167, 655360, 0, 393236, 1114112, 0, 393237, 917504, 0, 393238, 720896, 0, 196627, 983040, 0, 131091, 983040, 0, 65555, 786432, 0, 327700, 393216, 1, 262166, 196608, 1, 65557, 65536, 1, 196628, 1245184, 1, 327702, 589824, 1, 196629, 589824, 1, 65558, 917504, 0, 131094, 589824, 1, 131093, 589824, 1, 327701, 589824, 0, 196630, 1245184, 0, 131092, 1245184, 0, 65556, 1245184, 0, 262165, 1245184, 1, 262164, 1245184, 1)
+layer_0/tile_data = PackedInt32Array(917503, 655360, 0, 851968, 458752, 0, 851969, 65536, 0, 851970, 262144, 0, 851971, 458752, 0, 851974, 1376256, 1, 851975, 262144, 0, 851976, 262144, 0, 851977, 1376256, 1, 851978, 917504, 0, 851979, 1376256, 1, 851980, 458752, 0, 851981, 262144, 0, 851982, 262144, 0, 851983, 1376256, 1, 851984, 458752, 0, 851985, 262144, 0, 851986, 458752, 0, 851987, 1376256, 1, 851988, 262144, 0, 851989, 262144, 0, 851990, 262144, 0, 851991, 1114112, 0, 851992, 458752, 0, 851967, 1048576, 0, 786431, 1048576, 0, 720895, 851968, 0, 655359, 1048576, 0, 589823, 655360, 0, 65535, 1048576, 0, 131071, 1048576, 0, 196607, 851968, 0, 262143, 1048576, 0, 327679, 655360, 0, 393215, 655360, 0, 458751, 851968, 0, 524287, 1048576, 0, 0, 1769472, 0, 1, 720896, 0, 2, 917504, 0, 3, 917504, 0, 4, 720896, 0, 5, 1769472, 0, 6, 917504, 0, 7, 1769472, 0, 8, 720896, 0, 9, 1769472, 0, 10, 720896, 0, 11, 720896, 0, 12, 720896, 0, 13, 917504, 0, 14, 1769472, 0, 15, 1769472, 0, 16, 917504, 0, 17, 1769472, 0, 18, 720896, 0, 19, 917504, 0, 20, 917504, 0, 21, 720896, 0, 22, 720896, 0, 23, 1179648, 0, 24, 1769472, 0, 589824, 1769472, 1, 589825, 1376256, 1, 851972, 262144, 0, 851973, 917504, 0, 720901, 851968, 0, 786437, 1048576, 0, 655365, 655360, 0, 589829, 655360, 0, 524293, 1048576, 0, 458757, 851968, 0, 393221, 851968, 0, 262149, 1114112, 0, 327685, 655360, 0, 589826, 1835008, 1, 262146, 1769472, 1, 262147, 1572864, 1, 262148, 1769472, 1, 524294, 65536, 0, 524295, 262144, 0, 524296, 458752, 0, 524297, 458752, 0, 524298, 786432, 0, 589834, 983040, 0, 655370, 983040, 0, 720906, 1179648, 0, 786442, 983040, 0, 589833, 458752, 1, 589832, 917504, 0, 655367, 720896, 0, 589831, 1114112, 0, 589830, 262144, 1, 720903, 589824, 0, 786440, 589824, 0, 720904, 1245184, 0, 655368, 1245184, 0, 720905, 720896, 0, 786441, 1245184, 1, 786438, 1245184, 0, 720902, 1245184, 1, 786439, 393216, 1, 655366, 589824, 1, 655369, 589824, 1, 458762, 1179648, 0, 393226, 983040, 0, 327690, 1179648, 0, 262154, 1114112, 0, 262155, 458752, 0, 262156, 458752, 0, 262157, 458752, 0, 262158, 458752, 0, 262159, 458752, 0, 262160, 458752, 0, 262163, 1048576, 0, 327699, 1048576, 0, 393235, 1048576, 0, 458771, 851968, 0, 589839, 786432, 0, 655375, 983040, 0, 524307, 983040, 0, 524306, 458752, 0, 524305, 262144, 0, 524304, 458752, 0, 524303, 458752, 0, 524300, 393216, 0, 720911, 1179648, 0, 720910, 262144, 0, 720909, 458752, 0, 720908, 851968, 0, 589836, 851968, 0, 655372, 1048576, 0, 786455, 1048576, 0, 720919, 851968, 0, 655383, 851968, 0, 589847, 1048576, 0, 393239, 1179648, 0, 327703, 983040, 0, 65559, 983040, 0, 131095, 983040, 0, 196631, 1179648, 0, 262167, 786432, 0, 393236, 1114112, 0, 393237, 917504, 0, 393238, 720896, 0, 196627, 851968, 0, 131091, 851968, 0, 65555, 655360, 0, 327700, 393216, 1, 262166, 196608, 1, 65557, 65536, 1, 196628, 1245184, 1, 327702, 589824, 1, 196629, 589824, 1, 65558, 917504, 0, 131094, 589824, 1, 131093, 589824, 1, 327701, 589824, 0, 196630, 1245184, 0, 131092, 1245184, 0, 65556, 1245184, 0, 262165, 1245184, 1, 262164, 1245184, 1)
 
 [node name="level_objects" type="Node" parent="level_holder"]
 
-[node name="Tube09" type="Sprite2D" parent="level_holder/level_objects"]
-z_index = -1
-position = Vector2(216, 457)
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("3_8yn5o")
-
-[node name="Tube11" type="Sprite2D" parent="level_holder/level_objects"]
-z_index = -1
-position = Vector2(72, 216)
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("3_8yn5o")
-
-[node name="Tube12" type="Sprite2D" parent="level_holder/level_objects"]
-z_index = -1
-position = Vector2(24, 216)
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("3_8yn5o")
-
-[node name="Tube10" type="Sprite2D" parent="level_holder/level_objects"]
-z_index = -1
-position = Vector2(168, 457)
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("3_8yn5o")
-
-[node name="Tube13" type="Sprite2D" parent="level_holder/level_objects"]
-z_index = -1
-position = Vector2(840, 216)
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("3_8yn5o")
-
-[node name="Tube14" type="Sprite2D" parent="level_holder/level_objects"]
-z_index = -1
-position = Vector2(888, 216)
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("3_8yn5o")
-
 [node name="Door3" type="Sprite2D" parent="level_holder/level_objects"]
+z_index = -2
 position = Vector2(1128, 384)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("6_jrqbt")
 
 [node name="Tube06" type="Sprite2D" parent="level_holder/level_objects"]
-z_index = -1
+z_index = -2
 position = Vector2(552, 553)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("8_4yck0")
 
 [node name="Tube15" type="Sprite2D" parent="level_holder/level_objects"]
-z_index = -1
+z_index = -2
 position = Vector2(552, 601)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("9_28nj1")
 
 [node name="Tube01" type="Sprite2D" parent="level_holder/level_objects"]
-z_index = -1
+z_index = -2
 position = Vector2(552, 457)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("10_hqdum")
 
 [node name="Tube05" type="Sprite2D" parent="level_holder/level_objects"]
-z_index = -1
+z_index = -2
 position = Vector2(552, 312)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("10_hqdum")
 
 [node name="Tube02" type="Sprite2D" parent="level_holder/level_objects"]
-z_index = -1
+z_index = -2
 position = Vector2(552, 505)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("11_ywwoq")
 
 [node name="Tube03" type="Sprite2D" parent="level_holder/level_objects"]
-z_index = -1
+z_index = -2
 position = Vector2(552, 409)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("11_ywwoq")
 
 [node name="Tube07" type="Sprite2D" parent="level_holder/level_objects"]
-z_index = -1
+z_index = -2
 position = Vector2(552, 408)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("11_ywwoq")
 
 [node name="Tube08" type="Sprite2D" parent="level_holder/level_objects"]
-z_index = -1
+z_index = -2
 position = Vector2(552, 264)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("11_ywwoq")
 
 [node name="Tube04" type="Sprite2D" parent="level_holder/level_objects"]
-z_index = -1
+z_index = -2
 position = Vector2(552, 360)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("11_ywwoq")
 
 [node name="Tube21" type="Sprite2D" parent="level_holder/level_objects"]
-z_index = -1
+z_index = -2
 position = Vector2(239, 179)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("12_e2ob5")
 
 [node name="Capsule5" type="Sprite2D" parent="level_holder/level_objects"]
-z_index = -4
+z_index = -2
 position = Vector2(31.1771, 593.75)
 scale = Vector2(1.23958, 1.23958)
 texture = ExtResource("14_npw3l")
 
-[node name="Web4" type="Sprite2D" parent="level_holder/level_objects"]
-z_index = -1
-texture_filter = 1
-position = Vector2(215, 259)
-scale = Vector2(2.5, 2.5)
-texture = ExtResource("15_78ige")
-
-[node name="enemy_drone" parent="level_holder" instance=ExtResource("16_7idgo")]
-position = Vector2(1027, 489)
-
-[node name="camera_prop" parent="level_holder" instance=ExtResource("16_00oa7")]
-position = Vector2(120, 495)
-
-[node name="camera_prop2" parent="level_holder" instance=ExtResource("16_00oa7")]
-position = Vector2(24, 62)
-
-[node name="Monitor4" type="Sprite2D" parent="."]
+[node name="Monitor4" type="Sprite2D" parent="level_holder/level_objects"]
+z_index = -2
 position = Vector2(739.75, 364.75)
 scale = Vector2(1.13095, 1.13095)
 texture = ExtResource("16_etbbi")
 flip_h = true
+
+[node name="camera_prop2" parent="level_holder/level_objects" instance=ExtResource("16_00oa7")]
+z_index = -2
+position = Vector2(24, 62)
+
+[node name="enemy_drone" parent="level_holder/level_objects" instance=ExtResource("16_7idgo")]
+z_index = -2
+position = Vector2(1027, 489)
+
+[node name="Platform" type="Sprite2D" parent="level_holder/level_objects"]
+z_index = -2
+position = Vector2(168, 456)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("17_tu2u2")
+hframes = 6
+frame = 4
+
+[node name="Platform2" type="Sprite2D" parent="level_holder/level_objects"]
+z_index = -2
+position = Vector2(216, 456)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("17_tu2u2")
+hframes = 6
+frame = 4
+
+[node name="Platform3" type="Sprite2D" parent="level_holder/level_objects"]
+z_index = -2
+position = Vector2(24, 216)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("17_tu2u2")
+hframes = 6
+frame = 4
+
+[node name="Platform4" type="Sprite2D" parent="level_holder/level_objects"]
+z_index = -2
+position = Vector2(72, 216)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("17_tu2u2")
+hframes = 6
+frame = 4
+
+[node name="Platform5" type="Sprite2D" parent="level_holder/level_objects"]
+z_index = -2
+position = Vector2(840, 216)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("17_tu2u2")
+hframes = 6
+frame = 4
+
+[node name="Platform6" type="Sprite2D" parent="level_holder/level_objects"]
+z_index = -2
+position = Vector2(888, 216)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("17_tu2u2")
+hframes = 6
+frame = 4
+
+[node name="Grass1" type="Sprite2D" parent="level_holder/level_objects"]
+z_index = -2
+position = Vector2(81, 614)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("17_pxulr")
+
+[node name="Monitor1" type="Sprite2D" parent="level_holder/level_objects"]
+z_index = -2
+position = Vector2(169, 255)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("18_xariv")
+flip_v = true
+
+[node name="Tube13" type="Sprite2D" parent="level_holder/level_objects"]
+z_index = -2
+position = Vector2(167, 72)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("19_w6wf6")
+
+[node name="Tube09" type="Sprite2D" parent="level_holder/level_objects"]
+z_index = -2
+position = Vector2(215, 72)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("19_hbbfh")
+
+[node name="Tube12" type="Sprite2D" parent="level_holder/level_objects"]
+z_index = -2
+position = Vector2(311, 72)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("19_hbbfh")
+
+[node name="Tube11" type="Sprite2D" parent="level_holder/level_objects"]
+z_index = -2
+position = Vector2(263, 72)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("20_68h6i")
+
+[node name="Tube14" type="Sprite2D" parent="level_holder/level_objects"]
+z_index = -2
+position = Vector2(359, 72)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("9_28nj1")
+
+[node name="Grass2" type="Sprite2D" parent="level_holder/level_objects"]
+z_index = -2
+position = Vector2(224, 182)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("22_prds4")
+
+[node name="Grass4" type="Sprite2D" parent="level_holder/level_objects"]
+z_index = -2
+position = Vector2(194, 182)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("23_45xx1")
+
+[node name="Monitor5" type="Sprite2D" parent="level_holder/level_objects"]
+z_index = -2
+position = Vector2(125, 188)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("24_3rua8")
+
+[node name="Table3" type="Sprite2D" parent="level_holder/level_objects"]
+z_index = -2
+position = Vector2(887, 612)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("25_pugjh")
+
+[node name="Chair1" type="Sprite2D" parent="level_holder/level_objects"]
+z_index = -2
+position = Vector2(939, 606)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("26_q3cff")
+
+[node name="Grass5" type="Sprite2D" parent="level_holder/level_objects"]
+z_index = -2
+position = Vector2(749, 614)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("23_45xx1")
+
+[node name="Grass6" type="Sprite2D" parent="level_holder/level_objects"]
+z_index = -2
+position = Vector2(984, 615)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("27_m851p")
+
+[node name="Grass3" type="Sprite2D" parent="level_holder/level_objects"]
+z_index = -2
+position = Vector2(765, 618)
+texture = ExtResource("28_p64px")
+
+[node name="Monitor8" type="Sprite2D" parent="level_holder/level_objects"]
+z_index = -2
+position = Vector2(649, 612)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("29_ct54n")
+
+[node name="Web4" type="Sprite2D" parent="level_holder/level_objects"]
+z_index = -2
+position = Vector2(769, 443)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("15_78ige")
+
+[node name="platform_colliders" type="Node" parent="level_holder"]
+
+[node name="platform_collider" parent="level_holder/platform_colliders" instance=ExtResource("16_co4dh")]
+visible = false
+position = Vector2(153, 451)
+
+[node name="platform_collider2" parent="level_holder/platform_colliders" instance=ExtResource("16_co4dh")]
+visible = false
+position = Vector2(9, 211)
+
+[node name="platform_collider3" parent="level_holder/platform_colliders" instance=ExtResource("16_co4dh")]
+visible = false
+position = Vector2(826, 211)
 
 [editable path="level_holder"]
