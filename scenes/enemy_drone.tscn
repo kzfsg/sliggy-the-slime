@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://de680tnqylfrj"]
+[gd_scene load_steps=9 format=3 uid="uid://de680tnqylfrj"]
 
 [ext_resource type="Texture2D" uid="uid://dt62ilo4af3h5" path="res://sprites/drone.png" id="1_0hdsr"]
+[ext_resource type="Script" path="res://scripts/enemy_drone.gd" id="1_4m8vr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gtk3w"]
 atlas = ExtResource("1_0hdsr")
@@ -38,7 +39,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="enemy_drone" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ebeap"]
+size = Vector2(36, 43)
+
+[node name="enemy_drone" type="CharacterBody2D" groups=["hazards"]]
+script = ExtResource("1_4m8vr")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_wevue")
@@ -47,3 +52,5 @@ autoplay = "idle"
 frame_progress = 0.781587
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, -11.5)
+shape = SubResource("RectangleShape2D_ebeap")

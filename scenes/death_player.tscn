@@ -62,7 +62,7 @@ animations = [{
 }]
 
 [node name="death_player" type="AnimatedSprite2D"]
-scale = Vector2(0.26, 0.26)
+scale = Vector2(0.175, 0.175)
 sprite_frames = SubResource("SpriteFrames_mo6k7")
 frame_progress = 0.0881467
 script = ExtResource("2_i7te4")

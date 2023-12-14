@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://un0j7l2upmv2"]
 
-[ext_resource type="Texture2D" uid="uid://cb6g6sbscj8fs" path="res://Dungeon Tile Set.png" id="1_s8ahx"]
-[ext_resource type="Script" path="res://scripts/level_tiles.gd" id="2_wm5qq"]
+[ext_resource type="Texture2D" uid="uid://cb6g6sbscj8fs" path="res://Dungeon Tile Set.png" id="1_mbcl7"]
+[ext_resource type="Script" path="res://scripts/hazard_tiles.gd" id="2_i5k8o"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rjhun"]
-texture = ExtResource("1_s8ahx")
+texture = ExtResource("1_mbcl7")
 1:1/0 = 0
 1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:1/0/physics_layer_0/angular_velocity = 0.0
@@ -387,7 +387,7 @@ texture = ExtResource("1_s8ahx")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pq02s"]
 resource_name = "Spikes"
-texture = ExtResource("1_s8ahx")
+texture = ExtResource("1_mbcl7")
 1:14/0 = 0
 1:14/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:14/0/physics_layer_0/angular_velocity = 0.0
@@ -436,10 +436,10 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_rjhun")
 sources/1 = SubResource("TileSetAtlasSource_pq02s")
 
-[node name="TileMap" type="TileMap"]
+[node name="hazard_tiles" type="TileMap"]
 texture_filter = 1
 scale = Vector2(3, 3)
 tile_set = SubResource("TileSet_5aaak")
 format = 2
 layer_0/tile_data = PackedInt32Array(720897, 131072, 1, 720898, 131072, 1, 720899, 131072, 1, 720900, 131072, 1, 720906, 131072, 1, 720907, 131072, 1, 720908, 131072, 1, 720909, 131072, 1, 720910, 131072, 1, 720911, 131072, 1, 720912, 131072, 1, 720913, 131072, 1, 720914, 131072, 1, 720915, 131072, 1, 720916, 131072, 1, 720917, 131072, 1, 720918, 131072, 1, 720919, 131072, 1, 720896, 131072, 1, 655384, 65536, 6, 589848, 65536, 6, 524312, 65536, 6, 458776, 65536, 6, 393240, 65536, 6, 720895, 196608, 6, 655359, 196608, 6, 589823, 196608, 6, 524287, 196608, 6, 458751, 196608, 6, 0, 131072, 3, 1, 131072, 3, 2, 131072, 3, 3, 131072, 3, 4, 131072, 3, 5, 131072, 3, 6, 131072, 3, 7, 131072, 3, 8, 131072, 3, 9, 131072, 3, 10, 131072, 3, 11, 131072, 3, 12, 131072, 3, 13, 131072, 3, 14, 131072, 3, 15, 131072, 3, 16, 131072, 3, 17, 131072, 3, 18, 131072, 3, 19, 131072, 3, 20, 131072, 3, 21, 131072, 3, 22, 131072, 3, 23, 131072, 3, 131078, 131072, 12, 65542, 131072, 12, 131080, 131072, 12, 65544, 131072, 12)
-script = ExtResource("2_wm5qq")
+script = ExtResource("2_i5k8o")
