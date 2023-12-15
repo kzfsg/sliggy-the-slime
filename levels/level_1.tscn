@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cpy14qmppc8xb"]
+[gd_scene load_steps=30 format=3 uid="uid://cpy14qmppc8xb"]
 
 [ext_resource type="Script" path="res://StartGame/StartGame.gd" id="1_n7wt4"]
 [ext_resource type="PackedScene" uid="uid://boxye5m1nb4w6" path="res://StartGame/BG.tscn" id="2_8nklu"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://be6nts5w4barw" path="res://scenes/death_player.tscn" id="13_yy3yi"]
 [ext_resource type="PackedScene" uid="uid://lb4ug62creoj" path="res://scenes/endpoint.tscn" id="14_kyk1b"]
 [ext_resource type="PackedScene" uid="uid://ng4s4bla3o1" path="res://scenes/spawnpoint.tscn" id="15_5xyfi"]
+[ext_resource type="AudioStream" uid="uid://c2b7cf4738cxa" path="res://sounds/lobby.wav" id="18_me7to"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5oyuf"]
 texture = ExtResource("9_3masc")
@@ -15303,6 +15304,11 @@ rotation = 1.5708
 
 [node name="spawnpoint" parent="." instance=ExtResource("15_5xyfi")]
 position = Vector2(-174.776, 307)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_me7to")
+volume_db = -15.0
+autoplay = true
 
 [connection signal="pressed" from="Main Menu/MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Main Menu/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
