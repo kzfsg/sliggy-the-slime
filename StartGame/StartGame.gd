@@ -1,15 +1,12 @@
 extends Node2D
 
+func set_instruction_items_visibility(visible):
+	for group in get_node("Instructions 1").get_children():
+		for item in group.get_children():
+			item.visible = visible
 
 func _ready():
-	get_node("Instructions 1/Move/LeftArrow").visible = false
-	get_node("Instructions 1/Move/RightArrow").visible = false
-	get_node("Instructions 1/Move/MoveText").visible = false
-	get_node("Instructions 1/Move/MoveTextBack").visible = false
-	get_node("Instructions 1/Jump/JumpText").visible = false
-	get_node("Instructions 1/Jump/JumpTextBack").visible = false
-	get_node("Instructions 1/Death/DeathText").visible = false
-	get_node("Instructions 1/Death/DeathTextBack").visible = false
+	set_instruction_items_visibility(false)
 
 func _on_play_pressed():
 	get_node("Main Menu").queue_free()
@@ -21,15 +18,7 @@ func _on_play_pressed():
 	
 	
 	# Handle Instruction Visiblitiy
-	
-	get_node("Instructions 1/Move/LeftArrow").visible = true
-	get_node("Instructions 1/Move/RightArrow").visible = true
-	get_node("Instructions 1/Move/MoveText").visible = true
-	get_node("Instructions 1/Move/MoveTextBack").visible = true
-	get_node("Instructions 1/Jump/JumpText").visible = true
-	get_node("Instructions 1/Jump/JumpTextBack").visible = true
-	get_node("Instructions 1/Death/DeathText").visible = true
-	get_node("Instructions 1/Death/DeathTextBack").visible = true
+	set_instruction_items_visibility(true)
 	
 func _on_quit_pressed():
 	get_tree().quit()
