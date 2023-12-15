@@ -18,9 +18,6 @@
 
 [node name="all_tilemap" parent="." instance=ExtResource("3_t8yer")]
 
-[node name="player" parent="." instance=ExtResource("3_0wt6r")]
-position = Vector2(55, 445)
-
 [node name="death_player" parent="." instance=ExtResource("4_h863s")]
 
 [node name="endpoint" parent="." instance=ExtResource("5_svy7r")]
@@ -47,3 +44,6 @@ offset_bottom = 57.0
 theme_override_font_sizes/font_size = 30
 text = "5"
 metadata/_edit_use_anchors_ = true
+
+[node name="player" parent="." instance=ExtResource("3_0wt6r")]
+position = Vector2(55, 445)

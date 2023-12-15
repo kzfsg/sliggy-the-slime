@@ -322,6 +322,7 @@ animations = [{
 size = Vector2(77.3824, 171.125)
 
 [node name="player" type="CharacterBody2D" groups=["player"]]
+z_index = 10
 position = Vector2(1, 0)
 scale = Vector2(0.265, 0.25)
 script = ExtResource("1_8krbp")

@@ -2922,7 +2922,20 @@ visible = false
 [node name="all_tilemap" parent="level_holder" index="2"]
 visible = false
 
-[node name="player" parent="level_holder" index="3"]
+[node name="death_player" parent="level_holder" index="3"]
+position = Vector2(-576, -1024)
+
+[node name="endpoint" parent="level_holder" index="4"]
+position = Vector2(2672, 268)
+scale = Vector2(1, 1.46)
+
+[node name="spawnpoint" parent="level_holder" index="5"]
+position = Vector2(63, -361)
+
+[node name="checkpoint" parent="level_holder" index="6"]
+position = Vector2(496, 297)
+
+[node name="player" parent="level_holder" index="8"]
 z_index = 1
 position = Vector2(67, -419)
 total_lives = 1
@@ -2934,19 +2947,6 @@ limit_left = -64
 limit_top = -312
 limit_right = 2686
 limit_bottom = 535
-
-[node name="death_player" parent="level_holder" index="4"]
-position = Vector2(-576, -1024)
-
-[node name="endpoint" parent="level_holder" index="5"]
-position = Vector2(2672, 268)
-scale = Vector2(1, 1.46)
-
-[node name="spawnpoint" parent="level_holder" index="6"]
-position = Vector2(63, -361)
-
-[node name="checkpoint" parent="level_holder" index="7"]
-position = Vector2(496, 297)
 
 [node name="checkpoint2" parent="level_holder" instance=ExtResource("3_xdoxe")]
 position = Vector2(1103, 296)
