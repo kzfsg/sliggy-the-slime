@@ -21,6 +21,7 @@ const RUNNING_AUDIO_STOP_DELAY = 0.3
 @onready var hp_label = $"../hud/hp/Label"
 @onready var dead_icon = $"../hud/hp/Sprite2D"
 @onready var pushing_audio = $audio/pushing
+@onready var timer_label = $"../hud/timer"
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -38,6 +39,8 @@ var running_audio_stop_counter = 0
 var prev_velocity: Vector2
 @export var count_deaths: bool = true
 var deaths = 0
+@export var start_timer_here = false
+@export var show_timer = true
 
 func jump(delta):
 	var jump_audio = [jump_audio_1, jump_audio_2].pick_random()
@@ -49,9 +52,13 @@ func clear():
 	get_tree().call_group("blocks", "queue_free")
 
 func _ready():
+	if start_timer_here:
+		PlayerVariables.time_elapsed = 0
 	if not count_deaths:
 		dead_icon.visible = false
 		hp_label.visible = false
+	if not show_timer:
+		timer_label.visible = false
 	if show_vat_spawn:
 		curr_state = state.spawning
 		animated_sprite_2d.play("spawn")
@@ -64,6 +71,15 @@ func _process(_delta):
 		#hp_label.text = str(lives)
 	if count_deaths and hp_label:
 		hp_label.text = str(PlayerVariables.deaths)
+	if timer_label:
+		var time_elapsed = PlayerVariables.time_elapsed
+		var time_str = str(snapped(time_elapsed, 0.01))
+		var pad = 3 - time_str.split('.')[-1].length()
+		for i in range(pad):
+			time_str += '0'
+		if '.' not in time_str:
+			time_str += '.000'
+		timer_label.text = time_str
 	if curr_state == state.spawning:
 		return
 	#emit_signal("player_pos_signal", position)
