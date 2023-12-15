@@ -5,6 +5,13 @@ const FOLLOW_SPEED = 125
 const DASH_SPEED = 250
 const DASH_DIST = 200
 
+const lines: Array[String] = [
+	"Dr. Doofus: Sliggy, you are my greatest failure...",
+	"Dr. Doofus: Get your blocks away from me!",
+	"Dr. Doofus: You won't get so lucky again.",
+	"Dr. Doofus: With this treasure I summon..."
+]
+
 @onready var player = $"../player"
 @onready var ani_sprite = $AnimatedSprite2D
 
@@ -14,6 +21,11 @@ enum state {walk, dash, freeze, follow, dead}
 var curr_state = state.walk
 var dash_direction = 1
 var hp = 2
+
+var first_aggro = false
+
+func _ready():
+	DialogManager.start_dialog(Vector2(315,705), lines)
 
 func _physics_process(delta):
 	var player_pos = player.position
@@ -47,6 +59,9 @@ func _physics_process(delta):
 			if abs(player_dist_x - DASH_DIST) < 50:
 				direction = (-1 if is_left else 1)
 				trigger_dash(direction)
+			if not first_aggro:
+				DialogManager._advance_dialog()
+				first_aggro = true
 		state.walk:
 			ani_sprite.flip_h = is_left
 			ani_sprite.play("walk")
@@ -102,6 +117,7 @@ func trigger_hurt():
 	ani_sprite.play("hurt")
 	await ani_sprite.animation_finished
 	if hp == 0:
+		DialogManager._advance_dialog()
 		ani_sprite.play('death')
 		await ani_sprite.animation_finished
 		queue_free()
@@ -116,6 +132,7 @@ func _on_area_2d_body_entered(body):
 	if body is Block:
 		if body.position.y < position.y - 50:
 			trigger_hurt()
+			DialogManager._advance_dialog()
 			body.queue_free()
 		elif curr_state == state.dash:
 			body.queue_free()
