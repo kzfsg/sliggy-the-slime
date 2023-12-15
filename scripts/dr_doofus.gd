@@ -7,9 +7,10 @@ const DASH_DIST = 200
 
 const lines: Array[String] = [
 	"Dr. Doofus: Sliggy, you are my greatest failure...",
-	"Dr. Doofus: Get your blocks out of my face!",
+	"Dr. Doofus: Keep your blocks out of my face!",
 	"Dr. Doofus: You won't get so lucky again.",
-	"Dr. Doofus: With this treasure I summon..."
+	"Dr. Doofus: Stop now, or you'll regret it!",
+	"Dr. Doofus: With this treasure, I summon thee..."
 ]
 
 @onready var player = $"../player"
@@ -22,7 +23,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 enum state {walk, dash, freeze, follow, dead}
 var curr_state = state.walk
 var dash_direction = 1
-@export var hp = 1
+@export var hp = 3
 
 var first_aggro = false
 
