@@ -1,0 +1,67 @@
+[gd_scene load_steps=10 format=3 uid="uid://bgdcjfpjt0k0g"]
+
+[ext_resource type="Texture2D" uid="uid://dq2l8fjigqihr" path="res://sprites/doofus_walk.png" id="1_2ptkj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y5mmn"]
+size = Vector2(14, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xspjd"]
+atlas = ExtResource("1_2ptkj")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jsl57"]
+atlas = ExtResource("1_2ptkj")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gcqng"]
+atlas = ExtResource("1_2ptkj")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xbw02"]
+atlas = ExtResource("1_2ptkj")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yrqef"]
+atlas = ExtResource("1_2ptkj")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lmbhr"]
+atlas = ExtResource("1_2ptkj")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_upjvy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xspjd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jsl57")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gcqng")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xbw02")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yrqef")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lmbhr")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 3.5
+}]
+
+[node name="dr_doofus" type="RigidBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_y5mmn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(10, -7)
+sprite_frames = SubResource("SpriteFrames_upjvy")
+animation = &"walk"
+frame_progress = 0.692753

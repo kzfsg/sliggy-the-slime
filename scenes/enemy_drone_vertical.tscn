@@ -43,7 +43,7 @@ animations = [{
 size = Vector2(36, 43)
 
 [node name="enemy_drone_vertical" type="CharacterBody2D" groups=["hazards"]]
-collision_layer = 3
+collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_l0kif")
 
