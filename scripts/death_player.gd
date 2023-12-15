@@ -9,7 +9,6 @@ func spawn_block(pos):
 	var block = block_scene.instantiate()
 	block.position = pos
 	level_holder.add_child(block)
-	
 
 func play_animation(player_pos):
 	death_audio.play()

@@ -14,6 +14,8 @@ const lines: Array[String] = [
 
 @onready var player = $"../player"
 @onready var ani_sprite = $AnimatedSprite2D
+@onready var dash_sound = $dash
+@onready var alert_sound = $alert
 
 var is_left = true
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -25,6 +27,7 @@ var hp = 2
 var first_aggro = false
 
 func _ready():
+	alert_sound.play()
 	DialogManager.start_dialog(Vector2(315,705), lines)
 
 func _physics_process(delta):
@@ -92,6 +95,7 @@ func trigger_dash(direction):
 	ani_sprite.play("aggro")
 	await ani_sprite.animation_finished
 	#await get_tree().create_timer(0.8).timeout
+	dash_sound.play()
 	curr_state = state.dash
 	ani_sprite.play("dash")
 	await ani_sprite.animation_finished

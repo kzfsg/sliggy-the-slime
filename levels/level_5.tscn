@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://c5b5r032ja270"]
+[gd_scene load_steps=60 format=3 uid="uid://c5b5r032ja270"]
 
 [ext_resource type="PackedScene" uid="uid://ctsxqifl3ubd4" path="res://scenes/level_holder.tscn" id="1_xlitg"]
 [ext_resource type="Script" path="res://scripts/level_holder.gd" id="2_f3jmt"]
@@ -12,7 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://ck8547yq5iyvf" path="res://sprites/doofus_run.png" id="10_uiq0j"]
 [ext_resource type="Texture2D" uid="uid://dq2l8fjigqihr" path="res://sprites/doofus_walk.png" id="11_yo0nm"]
 [ext_resource type="PackedScene" uid="uid://de680tnqylfrj" path="res://scenes/enemy_drone.tscn" id="12_plqs8"]
+[ext_resource type="AudioStream" uid="uid://danwui65enmgy" path="res://sounds/doofus_dash.mp3" id="12_uoihv"]
 [ext_resource type="AudioStream" uid="uid://b25di7se8jp4q" path="res://sounds/boss.wav" id="13_06rhl"]
+[ext_resource type="AudioStream" uid="uid://rgefihjnpeuw" path="res://sounds/alert.mp3" id="13_tadre"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2gtue"]
 atlas = ExtResource("4_urfvn")
@@ -378,7 +380,19 @@ layer_1/tile_data = PackedInt32Array(1179647, 589829, 2, 1114111, 589829, 1, 104
 layer_2/name = "2"
 layer_2/tile_data = PackedInt32Array(983048, 983040, 21, 983059, 983040, 21)
 
-[node name="player" parent="level_holder" index="3"]
+[node name="death_player" parent="level_holder" index="3"]
+position = Vector2(-75, -96)
+
+[node name="endpoint" parent="level_holder" index="4"]
+position = Vector2(-149, 94)
+
+[node name="spawnpoint" parent="level_holder" index="5"]
+position = Vector2(-7, 473)
+
+[node name="checkpoint" parent="level_holder" index="6"]
+position = Vector2(-144, -34)
+
+[node name="player" parent="level_holder" index="8"]
 position = Vector2(-7, 473)
 total_lives = 5
 
@@ -387,20 +401,8 @@ visible = false
 enabled = false
 zoom = Vector2(1.78, 1.78)
 
-[node name="death_player" parent="level_holder" index="4"]
-position = Vector2(-75, -96)
-
-[node name="endpoint" parent="level_holder" index="5"]
-position = Vector2(-149, 94)
-
-[node name="spawnpoint" parent="level_holder" index="6"]
-position = Vector2(-7, 473)
-
-[node name="checkpoint" parent="level_holder" index="7"]
-position = Vector2(-144, -34)
-
 [node name="dr_doofus" type="CharacterBody2D" parent="level_holder"]
-position = Vector2(291, 589)
+position = Vector2(401, 588)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("3_ts2mo")
@@ -422,6 +424,14 @@ shape = SubResource("RectangleShape2D_558kd")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="level_holder/dr_doofus"]
 position = Vector2(-0.5, -0.5)
 shape = SubResource("RectangleShape2D_558kd")
+
+[node name="dash" type="AudioStreamPlayer" parent="level_holder/dr_doofus"]
+stream = ExtResource("12_uoihv")
+volume_db = -5.0
+
+[node name="alert" type="AudioStreamPlayer" parent="level_holder/dr_doofus"]
+stream = ExtResource("13_tadre")
+volume_db = -7.0
 
 [node name="enemy_drone" parent="level_holder" instance=ExtResource("12_plqs8")]
 position = Vector2(307, 398)
