@@ -54,8 +54,6 @@ func _process(_delta):
 		respawn()
 
 func _physics_process(delta):
-	print(is_dead , is_respawning, spawning)
-	print(is_on_floor())
 	var cannot_move = is_dead or is_respawning
 	if not is_respawning:
 		should_show_after_death = false

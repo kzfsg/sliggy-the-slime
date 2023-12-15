@@ -1,10 +1,10 @@
-[gd_scene load_steps=25 format=3 uid="uid://s5b0k3dxun5g"]
+[gd_scene load_steps=26 format=3 uid="uid://s5b0k3dxun5g"]
 
 [ext_resource type="PackedScene" uid="uid://ctsxqifl3ubd4" path="res://scenes/level_holder.tscn" id="1_4gyi4"]
 [ext_resource type="Texture2D" uid="uid://bh5uvgcwls123" path="res://lab-tileset/2 Background/Night/2.png" id="1_icr2m"]
 [ext_resource type="Texture2D" uid="uid://c6m4anixt378t" path="res://lab-tileset/1 Tiles/full_tile.png" id="2_mb1vg"]
 [ext_resource type="Texture2D" uid="uid://bdqrrskooyaiy" path="res://StartGame/TexturePack/Assets/Tiles.png" id="4_xn70j"]
-[ext_resource type="PackedScene" uid="uid://un0j7l2upmv2" path="res://scenes/hazard_tiles.tscn" id="5_m1ty0"]
+[ext_resource type="PackedScene" uid="uid://un0j7l2upmv2" path="res://tilemaps/hazard_tiles.tscn" id="5_m1ty0"]
 [ext_resource type="FontFile" uid="uid://7uav15qfnban" path="res://StartGame/Templates + Misc/ThaleahFat/ThaleahFat.ttf" id="6_v4it8"]
 [ext_resource type="Texture2D" uid="uid://da15jtpd16mtl" path="res://lab-tileset/3 Objects/Capsule1.png" id="7_r77wq"]
 [ext_resource type="Texture2D" uid="uid://d1ks7u0ja21ab" path="res://lab-tileset/3 Objects/Door2.png" id="8_b17gr"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://d0t5by85y7juh" path="res://lab-tileset/3 Objects/Chair2.png" id="19_jw7sj"]
 [ext_resource type="Texture2D" uid="uid://dymccfjl0764w" path="res://lab-tileset/3 Objects/Chair1.png" id="20_2p8g6"]
 [ext_resource type="Texture2D" uid="uid://cb2bw8tm2xrip" path="res://lab-tileset/4 Animated objects/Camera.png" id="21_7oryg"]
+[ext_resource type="PackedScene" uid="uid://c6nqqes4yjqdy" path="res://scenes/block.tscn" id="22_b88hi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i0wlt"]
 texture = ExtResource("2_mb1vg")
@@ -2871,28 +2872,35 @@ texture = ExtResource("1_icr2m")
 
 [node name="level_holder" parent="." instance=ExtResource("1_4gyi4")]
 
-[node name="level_tiles" parent="level_holder" index="0"]
-position = Vector2(-1, -56)
+[node name="level_background" parent="level_holder" index="0"]
+visible = false
 
-[node name="player" parent="level_holder" index="1"]
+[node name="hazard_tiles" parent="level_holder" index="1"]
+visible = false
+
+[node name="all_tilemap" parent="level_holder" index="2"]
+visible = false
+
+[node name="player" parent="level_holder" index="3"]
 z_index = 1
 position = Vector2(61, -368)
+limited_lives = false
 
 [node name="Camera2D" parent="level_holder/player" index="2"]
 limit_left = -64
 limit_top = -312
 limit_right = 1152
 
-[node name="death_player" parent="level_holder" index="2"]
+[node name="death_player" parent="level_holder" index="4"]
 position = Vector2(-576, -1024)
 
-[node name="endpoint" parent="level_holder" index="3"]
+[node name="endpoint" parent="level_holder" index="5"]
 position = Vector2(1140, 269)
 
-[node name="spawnpoint" parent="level_holder" index="4"]
+[node name="spawnpoint" parent="level_holder" index="6"]
 position = Vector2(117, 292)
 
-[node name="checkpoint" parent="level_holder" index="5"]
+[node name="checkpoint" parent="level_holder" index="7"]
 position = Vector2(460, 296)
 
 [node name="TileMap" type="TileMap" parent="level_holder"]
@@ -2991,6 +2999,30 @@ offset_bottom = 284.0
 theme_override_fonts/font = ExtResource("6_v4it8")
 theme_override_font_sizes/font_size = 22
 text = "You can also push blocks!"
+metadata/_edit_use_anchors_ = true
+
+[node name="Respawn" type="Node" parent="Text"]
+
+[node name="Back" type="Label" parent="Text/Respawn"]
+offset_left = 471.0
+offset_top = 365.0
+offset_right = 834.0
+offset_bottom = 388.0
+theme_override_colors/font_color = Color(0, 0.545098, 0, 1)
+theme_override_fonts/font = ExtResource("6_v4it8")
+theme_override_font_sizes/font_size = 22
+text = "[R] to respawn at the last checkpoint"
+metadata/_edit_use_anchors_ = true
+
+[node name="Front" type="Label" parent="Text/Respawn"]
+offset_left = 468.0
+offset_top = 367.0
+offset_right = 831.0
+offset_bottom = 390.0
+theme_override_fonts/font = ExtResource("6_v4it8")
+theme_override_font_sizes/font_size = 22
+text = "[R] to respawn at the last checkpoint
+"
 metadata/_edit_use_anchors_ = true
 
 [node name="Node" type="Node" parent="."]
@@ -3138,6 +3170,9 @@ position = Vector2(926, 207)
 texture = ExtResource("21_7oryg")
 hframes = 6
 frame = 5
+
+[node name="block" parent="." instance=ExtResource("22_b88hi")]
+position = Vector2(823, 302)
 
 [editable path="level_holder"]
 [editable path="level_holder/player"]

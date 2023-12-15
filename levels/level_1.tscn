@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://co23i6p3pxgw0" path="res://StartGame/TexturePack/Assets/Props-Rocks.png" id="10_wlpnl"]
 [ext_resource type="Texture2D" uid="uid://c6m4anixt378t" path="res://lab-tileset/1 Tiles/full_tile.png" id="11_5ruym"]
 [ext_resource type="PackedScene" uid="uid://dsyqubot4iron" path="res://scenes/player.tscn" id="11_cgfcq"]
-[ext_resource type="PackedScene" uid="uid://un0j7l2upmv2" path="res://scenes/hazard_tiles.tscn" id="12_klcjb"]
+[ext_resource type="PackedScene" uid="uid://un0j7l2upmv2" path="res://tilemaps/hazard_tiles.tscn" id="12_klcjb"]
 [ext_resource type="Texture2D" uid="uid://d1ks7u0ja21ab" path="res://lab-tileset/3 Objects/Door2.png" id="12_svhly"]
 [ext_resource type="PackedScene" uid="uid://be6nts5w4barw" path="res://scenes/death_player.tscn" id="13_yy3yi"]
 [ext_resource type="PackedScene" uid="uid://lb4ug62creoj" path="res://scenes/endpoint.tscn" id="14_kyk1b"]
@@ -15282,7 +15282,6 @@ position = Vector2(-3.77368, 12)
 enabled = false
 zoom = Vector2(1, 1)
 limit_left = 0
-limit_top = 0
 limit_right = 1440
 limit_bottom = 620
 
