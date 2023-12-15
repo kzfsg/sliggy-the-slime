@@ -7,7 +7,7 @@ const DASH_DIST = 200
 
 const lines: Array[String] = [
 	"Dr. Doofus: Sliggy, you are my greatest failure...",
-	"Dr. Doofus: Get your blocks away from me!",
+	"Dr. Doofus: Get your blocks out of my face!",
 	"Dr. Doofus: You won't get so lucky again.",
 	"Dr. Doofus: With this treasure I summon..."
 ]
@@ -134,7 +134,7 @@ func _on_area_2d_body_entered(body):
 	if body is Player and curr_state != state.dead:
 		player.die()
 	if body is Block:
-		if body.position.y < position.y - 50:
+		if body.position.y < position.y - 30:
 			trigger_hurt()
 			DialogManager._advance_dialog()
 			body.queue_free()
