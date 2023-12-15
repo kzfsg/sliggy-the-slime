@@ -15,7 +15,9 @@ func _physics_process(_delta):
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
 		if collision:
-			#var collider = collision.get_collider()
+			var collider = collision.get_collider()
+			if collider is Player:
+				collider.die()
 			#if collider is TileMap:
 			isLeft = true if collision.get_normal().x < 0 else false
 	
