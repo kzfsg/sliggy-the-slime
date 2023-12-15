@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdu1ivcjii2hr"]
+
+[ext_resource type="AudioStream" uid="uid://bfo006550v4kh" path="res://sounds/sliggy_death.mp3" id="1_ayxbp"]
+
+[node name="slime_hitsound" type="AudioStreamPlayer"]
+stream = ExtResource("1_ayxbp")
+volume_db = -14.0
+bus = &"bass_cut"

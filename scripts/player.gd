@@ -61,6 +61,10 @@ func _process(_delta):
 		respawn()
 
 func _physics_process(delta):
+	if curr_state == state.dead: 
+		running_audio.stop()
+		return
+	print(state.keys()[curr_state])
 	prev_velocity = velocity
 	move_and_slide()
 	var cannot_move = curr_state in [state.dead, state.respawning]
@@ -72,7 +76,7 @@ func _physics_process(delta):
 		collision_shape_2d.disabled = false
 		animated_sprite_2d.play("spawn")
 		return
-	#animations	
+	#animations
 	if get_real_velocity().x != 0 and is_on_floor():
 		if curr_state == state.pushing:
 			animated_sprite_2d.play("push")
@@ -102,6 +106,7 @@ func _physics_process(delta):
 		if not cannot_move and Input.is_action_just_pressed("jump"):
 			jump(delta)
 	else:
+		#if curr_state != state.dead:
 		curr_state = state.falling
 		animated_sprite_2d.play("falling")
 		# Coyote Time

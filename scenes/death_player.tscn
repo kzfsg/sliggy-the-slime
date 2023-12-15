@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dac7tw72s8gmx" path="res://sprites/sligga_death_detailed.png" id="1_ovrjl"]
 [ext_resource type="Script" path="res://scripts/death_player.gd" id="2_i7te4"]
 [ext_resource type="PackedScene" uid="uid://c6nqqes4yjqdy" path="res://scenes/block.tscn" id="3_sskk8"]
-[ext_resource type="AudioStream" uid="uid://bfo006550v4kh" path="res://sounds/sliggy_death.mp3" id="4_ctwwx"]
+[ext_resource type="PackedScene" uid="uid://cdu1ivcjii2hr" path="res://streamPlayers/slime_hitsound.tscn" id="4_wrthj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aafom"]
 atlas = ExtResource("1_ovrjl")
@@ -69,9 +69,6 @@ frame_progress = 0.0881467
 script = ExtResource("2_i7te4")
 block_scene = ExtResource("3_sskk8")
 
-[node name="death" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_ctwwx")
-volume_db = -14.0
-bus = &"bass_cut"
+[node name="slime_hitsound" parent="." instance=ExtResource("4_wrthj")]
 
 [connection signal="animation_looped" from="." to="." method="_on_animation_looped"]

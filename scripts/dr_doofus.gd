@@ -25,7 +25,7 @@ func _physics_process(delta):
 	
 	#follow or walk
 	if curr_state in [state.follow, state.walk]:
-		if player.position.y < position.y - 50 or player.is_dead:
+		if player.position.y < position.y - 50 or player.curr_state == player.state.dead:
 			curr_state = state.walk
 		else:
 			curr_state = state.follow

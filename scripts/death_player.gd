@@ -3,7 +3,7 @@ extends AnimatedSprite2D
 @export var block_scene: PackedScene
 @onready var level_holder = $".."
 @onready var player = $"../player"
-@onready var death_audio = $death
+@onready var death_audio = $slime_hitsound
 
 func spawn_block(pos):
 	var block = block_scene.instantiate()
