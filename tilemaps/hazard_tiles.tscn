@@ -436,7 +436,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_rjhun")
 sources/1 = SubResource("TileSetAtlasSource_pq02s")
 
-[node name="hazard_tiles" type="TileMap"]
+[node name="hazard_tiles" type="TileMap" groups=["hazards"]]
 texture_filter = 1
 scale = Vector2(3, 3)
 tile_set = SubResource("TileSet_5aaak")
