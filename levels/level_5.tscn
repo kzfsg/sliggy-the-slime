@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://c5b5r032ja270"]
+[gd_scene load_steps=63 format=3 uid="uid://c5b5r032ja270"]
 
 [ext_resource type="PackedScene" uid="uid://ctsxqifl3ubd4" path="res://scenes/level_holder.tscn" id="1_xlitg"]
 [ext_resource type="Script" path="res://scripts/level_holder.gd" id="2_f3jmt"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scripts/dr_doofus.gd" id="3_ts2mo"]
 [ext_resource type="Script" path="res://scripts/right_exit.gd" id="4_1v3d8"]
 [ext_resource type="Texture2D" uid="uid://cf7nr6wsgkff5" path="res://sprites/doofus_aggro.png" id="4_urfvn"]
+[ext_resource type="AudioStream" uid="uid://cm12h8f42638q" path="res://sounds/tomb_opening.mp3" id="5_sijg0"]
 [ext_resource type="Texture2D" uid="uid://dclkr6ejpyncw" path="res://sprites/doofus_attack.png" id="5_t48h8"]
 [ext_resource type="Texture2D" uid="uid://b56yk0t40xq5v" path="res://sprites/doofus_dash.png" id="6_c5dqy"]
 [ext_resource type="Texture2D" uid="uid://dxixvydv472qj" path="res://sprites/doofus_death.png" id="7_nber6"]
@@ -382,8 +383,11 @@ layer_2/name = "2"
 layer_2/tile_data = PackedInt32Array()
 script = ExtResource("4_1v3d8")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="level_holder/right_exit"]
+stream = ExtResource("5_sijg0")
+
 [node name="all_tilemap" parent="level_holder" index="3"]
-z_index = 10
+z_index = 1
 position = Vector2(-3, -32)
 layer_0/name = "0"
 layer_0/tile_data = PackedInt32Array(1048579, 1114115, 6, 983043, 1114115, 6, 1114115, 1114115, 1342177286, 1179650, 1114115, 1342177286, 1245186, 1114115, 1342177286, 1179651, 1114115, 6, 1769478, 589828, 1, 1769498, 655364, 0, 1769474, 655364, 268435457)
@@ -419,6 +423,7 @@ position = Vector2(401, 588)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("3_ts2mo")
+hp = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="level_holder/dr_doofus"]
 position = Vector2(1, -22)

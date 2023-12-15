@@ -2,6 +2,8 @@ extends TileMap
 
 const OPENING_SPEED = 40
 
+@onready var tomb_opening_audio = $AudioStreamPlayer
+
 var opening = false
 
 # Called when the node enters the scene tree for the first time.
@@ -17,4 +19,5 @@ func _process(delta):
 		opening = false
 
 func trigger():
+	tomb_opening_audio.play()
 	opening = true
