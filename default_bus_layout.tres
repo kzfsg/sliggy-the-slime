@@ -1,3 +1,28 @@
-[gd_resource type="AudioBusLayout" format=3 uid="uid://cebi2lst383p5"]
+[gd_resource type="AudioBusLayout" load_steps=4 format=3 uid="uid://cebi2lst383p5"]
+
+[sub_resource type="AudioEffectLowPassFilter" id="AudioEffectLowPassFilter_jpn7k"]
+resource_name = "LowPassFilter"
+cutoff_hz = 6000.0
+
+[sub_resource type="AudioEffectLowShelfFilter" id="AudioEffectLowShelfFilter_krde6"]
+resource_name = "LowShelfFilter"
+cutoff_hz = 50.0
+gain = 0.3
+
+[sub_resource type="AudioEffectHighPassFilter" id="AudioEffectHighPassFilter_vdqlo"]
+resource_name = "HighPassFilter"
+cutoff_hz = 100.0
 
 [resource]
+bus/1/name = &"bass_cut"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = false
+bus/1/volume_db = 0.0
+bus/1/send = &"Master"
+bus/1/effect/0/effect = SubResource("AudioEffectLowPassFilter_jpn7k")
+bus/1/effect/0/enabled = false
+bus/1/effect/1/effect = SubResource("AudioEffectLowShelfFilter_krde6")
+bus/1/effect/1/enabled = true
+bus/1/effect/2/effect = SubResource("AudioEffectHighPassFilter_vdqlo")
+bus/1/effect/2/enabled = false

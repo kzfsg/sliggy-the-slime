@@ -17,6 +17,7 @@ const RUNNING_AUDIO_STOP_DELAY = 0.3
 @onready var jump_audio_1 = $audio/jump_1
 @onready var jump_audio_2 = $audio/jump_2
 @onready var running_audio = $audio/running
+@onready var landing_audio = $audio/landing
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -31,6 +32,7 @@ var lives: int
 enum state {idle, running, falling, dead, respawning, spawning, pushing}
 var curr_state = state.idle
 var running_audio_stop_counter = 0
+var prev_velocity: Vector2
 
 func jump(delta):
 	var jump_audio = [jump_audio_1, jump_audio_2].pick_random()
@@ -59,6 +61,8 @@ func _process(_delta):
 		respawn()
 
 func _physics_process(delta):
+	prev_velocity = velocity
+	move_and_slide()
 	var cannot_move = curr_state in [state.dead, state.respawning]
 	
 	if curr_state != state.respawning:
@@ -120,7 +124,7 @@ func _physics_process(delta):
 		else:
 			velocity.x = move_toward(velocity.x, 0, 40)
 
-	move_and_slide()
+	#move_and_slide()
 	
 	if velocity.x < 0:
 		is_left = true
@@ -162,6 +166,8 @@ func _physics_process(delta):
 				animated_sprite_2d.play("push")
 				#collider.apply_central_impulse(force)
 				#collider.apply_central_force(force)
+	if (prev_velocity - velocity).y > 300:
+		landing_audio.play()
 
 func stop_moving():
 	velocity = Vector2(0,0)

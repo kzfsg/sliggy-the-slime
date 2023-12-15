@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://be6nts5w4barw"]
+[gd_scene load_steps=13 format=3 uid="uid://be6nts5w4barw"]
 
 [ext_resource type="Texture2D" uid="uid://dac7tw72s8gmx" path="res://sprites/sligga_death_detailed.png" id="1_ovrjl"]
 [ext_resource type="Script" path="res://scripts/death_player.gd" id="2_i7te4"]
 [ext_resource type="PackedScene" uid="uid://c6nqqes4yjqdy" path="res://scenes/block.tscn" id="3_sskk8"]
+[ext_resource type="AudioStream" uid="uid://bfo006550v4kh" path="res://sounds/sliggy_death.mp3" id="4_ctwwx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aafom"]
 atlas = ExtResource("1_ovrjl")
@@ -67,5 +68,10 @@ sprite_frames = SubResource("SpriteFrames_mo6k7")
 frame_progress = 0.0881467
 script = ExtResource("2_i7te4")
 block_scene = ExtResource("3_sskk8")
+
+[node name="death" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_ctwwx")
+volume_db = -14.0
+bus = &"bass_cut"
 
 [connection signal="animation_looped" from="." to="." method="_on_animation_looped"]

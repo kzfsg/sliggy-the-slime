@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://dsyqubot4iron"]
+[gd_scene load_steps=54 format=3 uid="uid://dsyqubot4iron"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_8krbp"]
 [ext_resource type="Texture2D" uid="uid://dh11hdyuyqpn8" path="res://sprites/sligga_base.png" id="1_cq0b4"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://dxc3j022cy7xr" path="res://sounds/sliggy_jump_1.wav" id="10_2vkp6"]
 [ext_resource type="AudioStream" uid="uid://jyeq4olwh5ss" path="res://sounds/sliggy_jump_2.wav" id="11_xoqk3"]
 [ext_resource type="AudioStream" uid="uid://dvyqp528q3fec" path="res://sounds/sliggy_running.wav" id="12_u3qca"]
+[ext_resource type="AudioStream" uid="uid://clu6okcehp1di" path="res://sounds/sliggy_landing.wav" id="13_do1ds"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ds0yc"]
 atlas = ExtResource("2_dh25v")
@@ -332,7 +333,7 @@ scale = Vector2(0.699018, 0.699018)
 sprite_frames = SubResource("SpriteFrames_loumv")
 animation = &"running"
 autoplay = "idle"
-frame_progress = 0.606593
+frame_progress = 0.755253
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1.42933, -1.30611)
@@ -362,6 +363,10 @@ stream = ExtResource("11_xoqk3")
 [node name="running" type="AudioStreamPlayer" parent="audio"]
 stream = ExtResource("12_u3qca")
 volume_db = 4.0
+
+[node name="landing" type="AudioStreamPlayer" parent="audio"]
+stream = ExtResource("13_do1ds")
+volume_db = -1.0
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]
