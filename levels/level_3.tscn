@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://w67hxagfgpsq"]
+[gd_scene load_steps=33 format=3 uid="uid://w67hxagfgpsq"]
 
 [ext_resource type="PackedScene" uid="uid://ctsxqifl3ubd4" path="res://scenes/level_holder.tscn" id="1_4gyi4"]
 [ext_resource type="Texture2D" uid="uid://c6m4anixt378t" path="res://lab-tileset/1 Tiles/full_tile.png" id="2_mb1vg"]
@@ -29,6 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://cvv864vaddou3" path="res://lab-tileset/3 Objects/Grass5.png" id="27_m851p"]
 [ext_resource type="Texture2D" uid="uid://ct8ldjymmggus" path="res://lab-tileset/3 Objects/Grass3.png" id="28_p64px"]
 [ext_resource type="Texture2D" uid="uid://b0alqn6mb8fre" path="res://lab-tileset/3 Objects/Monitor8.png" id="29_ct54n"]
+[ext_resource type="AudioStream" uid="uid://cmqkgsuva1cas" path="res://sounds/chemlab.wav" id="30_rhi4o"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8jhfa"]
 texture = ExtResource("2_mb1vg")
@@ -440,7 +441,7 @@ physics_layer_0/collision_layer = 3
 physics_layer_0/collision_mask = 3
 sources/0 = SubResource("TileSetAtlasSource_8jhfa")
 
-[node name="level_1" type="Node"]
+[node name="level_3" type="Node"]
 
 [node name="level_holder" parent="." instance=ExtResource("1_4gyi4")]
 
@@ -730,5 +731,10 @@ position = Vector2(9, 211)
 [node name="platform_collider3" parent="level_holder/platform_colliders" instance=ExtResource("16_co4dh")]
 visible = false
 position = Vector2(826, 211)
+
+[node name="chemlab" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("30_rhi4o")
+volume_db = -6.0
+autoplay = true
 
 [editable path="level_holder"]

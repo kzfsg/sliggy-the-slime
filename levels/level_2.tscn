@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://s5b0k3dxun5g"]
+[gd_scene load_steps=29 format=3 uid="uid://s5b0k3dxun5g"]
 
 [ext_resource type="PackedScene" uid="uid://ctsxqifl3ubd4" path="res://scenes/level_holder.tscn" id="1_4gyi4"]
 [ext_resource type="Texture2D" uid="uid://bh5uvgcwls123" path="res://lab-tileset/2 Background/Night/2.png" id="1_icr2m"]
@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://dymccfjl0764w" path="res://lab-tileset/3 Objects/Chair1.png" id="20_2p8g6"]
 [ext_resource type="Texture2D" uid="uid://cb2bw8tm2xrip" path="res://lab-tileset/4 Animated objects/Camera.png" id="21_7oryg"]
 [ext_resource type="PackedScene" uid="uid://c6nqqes4yjqdy" path="res://scenes/block.tscn" id="22_b88hi"]
+[ext_resource type="AudioStream" uid="uid://c2b7cf4738cxa" path="res://sounds/lobby.wav" id="24_p3xgd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i0wlt"]
 texture = ExtResource("2_mb1vg")
@@ -3232,6 +3233,11 @@ position = Vector2(594, 303)
 
 [node name="block3" parent="." instance=ExtResource("22_b88hi")]
 position = Vector2(594, 254)
+
+[node name="lobby_music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("24_p3xgd")
+volume_db = -15.0
+autoplay = true
 
 [connection signal="body_entered" from="level_holder/temp_kill_zone" to="level_holder/temp_kill_zone" method="_on_body_entered"]
 

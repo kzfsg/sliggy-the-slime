@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://c5b5r032ja270"]
+[gd_scene load_steps=58 format=3 uid="uid://c5b5r032ja270"]
 
 [ext_resource type="PackedScene" uid="uid://ctsxqifl3ubd4" path="res://scenes/level_holder.tscn" id="1_xlitg"]
 [ext_resource type="Script" path="res://scripts/level_holder.gd" id="2_f3jmt"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://ck8547yq5iyvf" path="res://sprites/doofus_run.png" id="10_uiq0j"]
 [ext_resource type="Texture2D" uid="uid://dq2l8fjigqihr" path="res://sprites/doofus_walk.png" id="11_yo0nm"]
 [ext_resource type="PackedScene" uid="uid://de680tnqylfrj" path="res://scenes/enemy_drone.tscn" id="12_plqs8"]
+[ext_resource type="AudioStream" uid="uid://b25di7se8jp4q" path="res://sounds/boss.wav" id="13_06rhl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2gtue"]
 atlas = ExtResource("4_urfvn")
@@ -431,6 +432,11 @@ limit_left = -50
 limit_top = 0
 limit_right = 1150
 limit_bottom = 670
+
+[node name="boss" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_06rhl")
+volume_db = -10.0
+autoplay = true
 
 [connection signal="body_entered" from="level_holder/dr_doofus/Area2D" to="level_holder/dr_doofus" method="_on_area_2d_body_entered"]
 
