@@ -33,7 +33,7 @@ var should_show_after_death = false
 var lives: int
 @export var show_vat_spawn: bool = false
 @export var limited_lives: bool = true
-enum state {idle, running, falling, dead, respawning, spawning, pushing}
+enum state {idle, running, falling, dead, respawning, spawning, pushing, locked}
 var curr_state = state.idle
 var running_audio_stop_counter = 0
 var prev_velocity: Vector2
@@ -89,6 +89,9 @@ func _process(_delta):
 		respawn()
 
 func _physics_process(delta):
+	if curr_state == state.locked:
+		animated_sprite_2d.play('idle')
+		return
 	if curr_state == state.dead: 
 		running_audio.stop()
 		pushing_audio.stop()

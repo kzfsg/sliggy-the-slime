@@ -21,15 +21,21 @@ const lines: Array[String] = [
 var is_left = true
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 enum state {walk, dash, freeze, follow, dead}
-var curr_state = state.walk
+var curr_state = state.freeze
 var dash_direction = 1
 @export var hp = 3
 
 var first_aggro = false
 
 func _ready():
+	player.curr_state = 7 #locked
+	ani_sprite.play('aggro')
 	alert_sound.play()
 	DialogManager.start_dialog(Vector2(315,705), lines)
+	await get_tree().create_timer(3).timeout
+	curr_state = state.walk
+	await get_tree().create_timer(2).timeout
+	player.curr_state = 0 #locked
 
 func _physics_process(delta):
 	var player_pos = player.position
@@ -74,6 +80,7 @@ func _physics_process(delta):
 			#position.x += dash_direction * DASH_SPEED * delta
 			velocity.x = dash_direction * DASH_SPEED
 		state.freeze:
+			#ani_sprite.stop()
 			velocity.x = 0
 		state.dead:
 			velocity.x = 0
