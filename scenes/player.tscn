@@ -325,6 +325,7 @@ size = Vector2(77.3824, 171.125)
 position = Vector2(1, 0)
 scale = Vector2(0.265, 0.25)
 script = ExtResource("1_8krbp")
+limited_lives = false
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
