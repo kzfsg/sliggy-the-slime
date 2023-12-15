@@ -13,8 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://dq2l8fjigqihr" path="res://sprites/doofus_walk.png" id="11_yo0nm"]
 [ext_resource type="PackedScene" uid="uid://de680tnqylfrj" path="res://scenes/enemy_drone.tscn" id="12_plqs8"]
 [ext_resource type="AudioStream" uid="uid://danwui65enmgy" path="res://sounds/doofus_dash.mp3" id="12_uoihv"]
-[ext_resource type="AudioStream" uid="uid://b25di7se8jp4q" path="res://sounds/boss.wav" id="13_06rhl"]
 [ext_resource type="AudioStream" uid="uid://rgefihjnpeuw" path="res://sounds/alert.mp3" id="13_tadre"]
+[ext_resource type="AudioStream" uid="uid://dqjohup4f4ugl" path="res://sounds/boss.mp3" id="15_aomr7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2gtue"]
 atlas = ExtResource("4_urfvn")
@@ -445,7 +445,7 @@ limit_right = 1150
 limit_bottom = 700
 
 [node name="boss" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("13_06rhl")
+stream = ExtResource("15_aomr7")
 volume_db = -10.0
 autoplay = true
 

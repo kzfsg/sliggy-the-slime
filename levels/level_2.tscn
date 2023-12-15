@@ -24,7 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://dymccfjl0764w" path="res://lab-tileset/3 Objects/Chair1.png" id="20_2p8g6"]
 [ext_resource type="Texture2D" uid="uid://cb2bw8tm2xrip" path="res://lab-tileset/4 Animated objects/Camera.png" id="21_7oryg"]
 [ext_resource type="PackedScene" uid="uid://c6nqqes4yjqdy" path="res://scenes/block.tscn" id="22_b88hi"]
-[ext_resource type="AudioStream" uid="uid://c2b7cf4738cxa" path="res://sounds/lobby.wav" id="24_p3xgd"]
+[ext_resource type="AudioStream" uid="uid://bn5q2c8y4p5md" path="res://sounds/chemlab.mp3" id="25_n7pqb"]
 [ext_resource type="Texture2D" uid="uid://ckd16gp2jw0ov" path="res://lab-tileset/3 Objects/Capsule5.png" id="26_vv3q6"]
 [ext_resource type="Texture2D" uid="uid://cmeq80lb18ra7" path="res://lab-tileset/3 Objects/Grass1.png" id="27_0jmfa"]
 [ext_resource type="Texture2D" uid="uid://dfp5qrmabe7x5" path="res://lab-tileset/3 Objects/Grass2.png" id="28_53ayk"]
@@ -3382,8 +3382,8 @@ position = Vector2(955, 304)
 position = Vector2(955, 255)
 
 [node name="lobby_music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("24_p3xgd")
-volume_db = -15.0
+stream = ExtResource("25_n7pqb")
+volume_db = -6.0
 autoplay = true
 
 [node name="Capsule5" type="Sprite2D" parent="."]

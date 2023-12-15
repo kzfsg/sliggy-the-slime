@@ -29,7 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://cvv864vaddou3" path="res://lab-tileset/3 Objects/Grass5.png" id="27_m851p"]
 [ext_resource type="Texture2D" uid="uid://ct8ldjymmggus" path="res://lab-tileset/3 Objects/Grass3.png" id="28_p64px"]
 [ext_resource type="Texture2D" uid="uid://b0alqn6mb8fre" path="res://lab-tileset/3 Objects/Monitor8.png" id="29_ct54n"]
-[ext_resource type="AudioStream" uid="uid://cmqkgsuva1cas" path="res://sounds/chemlab.wav" id="30_rhi4o"]
+[ext_resource type="AudioStream" uid="uid://bn5q2c8y4p5md" path="res://sounds/chemlab.mp3" id="30_fcvrd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8jhfa"]
 texture = ExtResource("2_mb1vg")
@@ -453,24 +453,24 @@ texture = ExtResource("2_yvoxd")
 [node name="hazard_tiles" parent="level_holder" index="1"]
 layer_0/tile_data = PackedInt32Array(786435, 131073, 14, 786436, 262145, 14, 524288, 262145, 1342177294, 458752, 393217, 1342177294, 393216, 131073, 1342177294, 458758, 131073, 14, 458759, 131073, 14, 458760, 262145, 14, 458761, 393217, 14, 655373, 262145, 14, 655374, 131073, 14, 327693, 131073, 805306382, 327694, 262145, 805306382, 196620, 262145, 14, 65550, 393217, 805306382, 196624, 393217, 14)
 
-[node name="player" parent="level_holder" index="3"]
-position = Vector2(28, 598)
-total_lives = 7
-
-[node name="death_player" parent="level_holder" index="4"]
+[node name="death_player" parent="level_holder" index="3"]
 position = Vector2(-203, -41)
 
-[node name="endpoint" parent="level_holder" index="5"]
+[node name="endpoint" parent="level_holder" index="4"]
 z_index = 1
 position = Vector2(1128, 396)
 
-[node name="spawnpoint" parent="level_holder" index="6"]
+[node name="spawnpoint" parent="level_holder" index="5"]
 position = Vector2(28, 598)
 
-[node name="checkpoint" parent="level_holder" index="7"]
+[node name="checkpoint" parent="level_holder" index="6"]
 z_index = -1
 position = Vector2(505, 147)
 scale = Vector2(1.5, 1.5)
+
+[node name="player" parent="level_holder" index="8"]
+position = Vector2(28, 598)
+total_lives = 7
 
 [node name="level_tiles_lab" type="TileMap" parent="level_holder"]
 texture_filter = 1
@@ -733,7 +733,7 @@ visible = false
 position = Vector2(826, 211)
 
 [node name="chemlab" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("30_rhi4o")
+stream = ExtResource("30_fcvrd")
 volume_db = -6.0
 autoplay = true
 

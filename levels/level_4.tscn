@@ -18,8 +18,8 @@
 [ext_resource type="Texture2D" uid="uid://dbqm5l4a557j5" path="res://lab-tileset/3 Objects/Tube_09.png" id="17_jf7pa"]
 [ext_resource type="Texture2D" uid="uid://b1jnr3ll4ptpf" path="res://lab-tileset/3 Objects/Tube_07.png" id="18_fvr1v"]
 [ext_resource type="Texture2D" uid="uid://cpxu1qhx13v4j" path="res://lab-tileset/3 Objects/Tube_01.png" id="19_i6kyc"]
+[ext_resource type="AudioStream" uid="uid://bn5q2c8y4p5md" path="res://sounds/chemlab.mp3" id="20_1qxu8"]
 [ext_resource type="Texture2D" uid="uid://wvdk2bkybwhl" path="res://lab-tileset/3 Objects/Grass6.png" id="20_i21nh"]
-[ext_resource type="AudioStream" uid="uid://cmqkgsuva1cas" path="res://sounds/chemlab.wav" id="20_r8123"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xa7wd"]
 texture = ExtResource("2_cjplp")
@@ -564,7 +564,7 @@ z_index = -2
 position = Vector2(555, 313)
 
 [node name="chemlab" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("20_r8123")
+stream = ExtResource("20_1qxu8")
 volume_db = -6.0
 autoplay = true
 

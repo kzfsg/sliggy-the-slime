@@ -18,7 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://be6nts5w4barw" path="res://scenes/death_player.tscn" id="13_yy3yi"]
 [ext_resource type="PackedScene" uid="uid://lb4ug62creoj" path="res://scenes/endpoint.tscn" id="14_kyk1b"]
 [ext_resource type="PackedScene" uid="uid://ng4s4bla3o1" path="res://scenes/spawnpoint.tscn" id="15_5xyfi"]
-[ext_resource type="AudioStream" uid="uid://c2b7cf4738cxa" path="res://sounds/lobby.wav" id="18_me7to"]
+[ext_resource type="AudioStream" uid="uid://ccnro464frqcq" path="res://sounds/lobby.mp3" id="18_lqvbx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5oyuf"]
 texture = ExtResource("9_3masc")
@@ -15278,7 +15278,6 @@ layer_17/tile_data = PackedInt32Array(1507307, 196608, 1342177281, 1572843, 6553
 
 [node name="player" parent="." instance=ExtResource("11_cgfcq")]
 position = Vector2(-174.776, 304)
-limited_lives = false
 
 [node name="Camera2D" parent="player" index="2"]
 position = Vector2(-3.77368, 12)
@@ -15309,7 +15308,7 @@ position = Vector2(-174.776, 307)
 [node name="audio" type="Node" parent="."]
 
 [node name="lobby_music" type="AudioStreamPlayer" parent="audio"]
-stream = ExtResource("18_me7to")
+stream = ExtResource("18_lqvbx")
 volume_db = -15.0
 autoplay = true
 
