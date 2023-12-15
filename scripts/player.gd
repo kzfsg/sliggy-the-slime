@@ -15,6 +15,7 @@ const PUSH = 200
 @onready var lives_indicator = $lives_indicator
 @onready var jump_audio_1 = $audio/jump_1
 @onready var jump_audio_2 = $audio/jump_2
+@onready var running_audio = $audio/running
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -30,6 +31,8 @@ var pushing = false
 var lives: int
 @export var show_vat_spawn: bool = false
 @export var limited_lives: bool = true
+enum state {idle, running, falling, dead}
+var curr_state = state.idle
 
 func jump(delta):
 	var jump_audio = [jump_audio_1, jump_audio_2].pick_random()
@@ -71,6 +74,7 @@ func _physics_process(delta):
 		if pushing:
 			animated_sprite_2d.play("push")
 		else:
+			running_audio.play()
 			animated_sprite_2d.play("running")
 	#delay enabling collision to the second frame so it doesn't clip the spawned block
 	elif is_respawning:
