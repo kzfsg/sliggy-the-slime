@@ -61,6 +61,7 @@ _data = {
 }
 
 [node name="lives_indicator" type="Node2D"]
+visible = false
 script = ExtResource("1_nuj2q")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -69,19 +70,21 @@ libraries = {
 }
 
 [node name="old" type="Label" parent="."]
-modulate = Color(1, 1, 1, 0)
+visible = false
 offset_left = -20.0
-offset_top = 30.0
 offset_right = 20.0
-offset_bottom = 53.0
+offset_bottom = 23.0
 size_flags_horizontal = 4
 text = "old"
 horizontal_alignment = 1
 
 [node name="new" type="Label" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
 offset_left = -20.0
+offset_top = -40.0
 offset_right = 20.0
-offset_bottom = 23.0
+offset_bottom = -17.0
 size_flags_horizontal = 4
 text = "new"
 horizontal_alignment = 1

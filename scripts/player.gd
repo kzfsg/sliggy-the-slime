@@ -18,6 +18,7 @@ const RUNNING_AUDIO_STOP_DELAY = 0.3
 @onready var jump_audio_2 = $audio/jump_2
 @onready var running_audio = $audio/running
 @onready var landing_audio = $audio/landing
+@onready var hp_label = $"../hud/hp/Label"
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -52,6 +53,8 @@ func _ready():
 	lives = total_lives
 
 func _process(_delta):
+	if hp_label:
+		hp_label.text = str(lives)
 	if curr_state == state.spawning:
 		return
 	#emit_signal("player_pos_signal", position)

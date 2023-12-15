@@ -348,7 +348,6 @@ limit_right = 1150
 limit_bottom = 670
 
 [node name="lives_indicator" parent="." instance=ExtResource("9_xh1q6")]
-visible = false
 position = Vector2(-3.77359, -184)
 scale = Vector2(3, 3)
 
@@ -356,17 +355,19 @@ scale = Vector2(3, 3)
 
 [node name="jump_1" type="AudioStreamPlayer" parent="audio"]
 stream = ExtResource("10_2vkp6")
+volume_db = -10.0
 
 [node name="jump_2" type="AudioStreamPlayer" parent="audio"]
 stream = ExtResource("11_xoqk3")
+volume_db = -20.0
 
 [node name="running" type="AudioStreamPlayer" parent="audio"]
 stream = ExtResource("12_u3qca")
-volume_db = 4.0
+volume_db = -2.0
 
 [node name="landing" type="AudioStreamPlayer" parent="audio"]
 stream = ExtResource("13_do1ds")
-volume_db = -1.0
+volume_db = -10.0
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 7

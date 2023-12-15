@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ctsxqifl3ubd4"]
+[gd_scene load_steps=10 format=3 uid="uid://ctsxqifl3ubd4"]
 
 [ext_resource type="PackedScene" uid="uid://dobsobymusda1" path="res://scenes/level_background.tscn" id="1_35act"]
 [ext_resource type="PackedScene" uid="uid://un0j7l2upmv2" path="res://tilemaps/hazard_tiles.tscn" id="2_p4h6l"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://lb4ug62creoj" path="res://scenes/endpoint.tscn" id="5_svy7r"]
 [ext_resource type="PackedScene" uid="uid://ng4s4bla3o1" path="res://scenes/spawnpoint.tscn" id="6_dwqjy"]
 [ext_resource type="PackedScene" uid="uid://dvufa7xvj2jth" path="res://scenes/checkpoint.tscn" id="7_bqi7m"]
+[ext_resource type="Texture2D" uid="uid://8hnbv6hhehnb" path="res://sprites/sliggy_head.png" id="9_h07rm"]
 
 [node name="level_holder" type="Node"]
 
@@ -28,3 +29,20 @@ position = Vector2(55, 445)
 position = Vector2(30, 500)
 
 [node name="checkpoint" parent="." instance=ExtResource("7_bqi7m")]
+
+[node name="hud" type="CanvasLayer" parent="."]
+
+[node name="hp" type="Node" parent="hud"]
+
+[node name="Sprite2D" type="Sprite2D" parent="hud/hp"]
+position = Vector2(33, 32)
+scale = Vector2(0.253703, 0.253703)
+texture = ExtResource("9_h07rm")
+
+[node name="Label" type="Label" parent="hud/hp"]
+offset_left = 66.0
+offset_top = 15.0
+offset_right = 106.0
+offset_bottom = 57.0
+theme_override_font_sizes/font_size = 30
+text = "5"
