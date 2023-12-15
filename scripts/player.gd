@@ -20,6 +20,7 @@ const RUNNING_AUDIO_STOP_DELAY = 0.3
 @onready var landing_audio = $audio/landing
 @onready var hp_label = $"../hud/hp/Label"
 @onready var dead_icon = $"../hud/hp/Sprite2D"
+@onready var pushing_audio = $audio/pushing
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -74,6 +75,7 @@ func _process(_delta):
 func _physics_process(delta):
 	if curr_state == state.dead: 
 		running_audio.stop()
+		pushing_audio.stop()
 		return
 	#print(state.keys()[curr_state])
 	prev_velocity = velocity
@@ -87,6 +89,13 @@ func _physics_process(delta):
 		collision_shape_2d.disabled = false
 		animated_sprite_2d.play("spawn")
 		return
+		
+	if curr_state == state.pushing:
+		if not pushing_audio.playing:
+			pushing_audio.play()
+	else:
+		if pushing_audio.playing:
+			pushing_audio.stop()
 	#animations
 	if get_real_velocity().x != 0 and is_on_floor():
 		if curr_state == state.pushing:
