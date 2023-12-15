@@ -181,7 +181,7 @@ func die():
 	if curr_state == state.dead: return
 	#collision_shape_2d.set_deferred("disabled",true)
 	lives -= 1
-	collision_shape_2d.disabled = true
+	collision_shape_2d.set_deferred("disabled",true)
 	stop_moving()
 	curr_state = state.dead
 	animated_sprite_2d.hide()
