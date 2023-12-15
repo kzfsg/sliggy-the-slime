@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://cyag78vlyjdqi"]
+
+[ext_resource type="Script" path="res://scripts/text_box.gd" id="1_n67pj"]
+[ext_resource type="Texture2D" uid="uid://bsh4jkbjmss3" path="res://sprites/speech_bubble.png" id="1_tv5o7"]
+[ext_resource type="FontFile" uid="uid://qmhuvtvkntiq" path="res://fonts/Minecraft.ttf" id="2_b5olk"]
+
+[node name="TextBox" type="MarginContainer"]
+script = ExtResource("1_n67pj")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_tv5o7")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Label" type="Label" parent="MarginContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_b5olk")
+vertical_alignment = 1
+
+[node name="LetterDisplayTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="LetterDisplayTimer" to="." method="_on_letter_display_timer_timeout"]
