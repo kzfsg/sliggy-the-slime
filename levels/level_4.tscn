@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b1mocd5ly2hge"]
+[gd_scene load_steps=23 format=3 uid="uid://b1mocd5ly2hge"]
 
 [ext_resource type="PackedScene" uid="uid://ctsxqifl3ubd4" path="res://scenes/level_holder.tscn" id="1_pm08o"]
 [ext_resource type="Texture2D" uid="uid://c6m4anixt378t" path="res://lab-tileset/1 Tiles/full_tile.png" id="2_cjplp"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://dbqm5l4a557j5" path="res://lab-tileset/3 Objects/Tube_09.png" id="17_jf7pa"]
 [ext_resource type="Texture2D" uid="uid://b1jnr3ll4ptpf" path="res://lab-tileset/3 Objects/Tube_07.png" id="18_fvr1v"]
 [ext_resource type="Texture2D" uid="uid://cpxu1qhx13v4j" path="res://lab-tileset/3 Objects/Tube_01.png" id="19_i6kyc"]
+[ext_resource type="PackedScene" uid="uid://c6nqqes4yjqdy" path="res://scenes/block.tscn" id="20_bd8mq"]
 [ext_resource type="Texture2D" uid="uid://wvdk2bkybwhl" path="res://lab-tileset/3 Objects/Grass6.png" id="20_i21nh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xa7wd"]
@@ -380,7 +381,8 @@ texture_region_size = Vector2i(32, 32)
 
 [sub_resource type="TileSet" id="TileSet_7e7jk"]
 tile_size = Vector2i(32, 32)
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 3
+physics_layer_0/collision_mask = 3
 sources/0 = SubResource("TileSetAtlasSource_xa7wd")
 
 [node name="level_3" type="Node"]
@@ -390,12 +392,13 @@ sources/0 = SubResource("TileSetAtlasSource_xa7wd")
 [node name="level_background" parent="level_holder" index="0"]
 z_index = -20
 texture_filter = 1
+metadata/_edit_lock_ = true
 
 [node name="player" parent="level_holder" index="3"]
-position = Vector2(71, 397)
+position = Vector2(71, 410)
 
 [node name="spawnpoint" parent="level_holder" index="6"]
-position = Vector2(72, 400)
+position = Vector2(72, 413)
 
 [node name="level_tiles_lab" type="TileMap" parent="level_holder"]
 texture_filter = 1
@@ -552,5 +555,8 @@ position = Vector2(776, 298)
 [node name="enemy_drone_vertical3" parent="level_holder/level_objects" instance=ExtResource("4_smcue")]
 z_index = -2
 position = Vector2(555, 313)
+
+[node name="block" parent="." instance=ExtResource("20_bd8mq")]
+position = Vector2(158, 359)
 
 [editable path="level_holder"]

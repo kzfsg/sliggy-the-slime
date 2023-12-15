@@ -436,7 +436,8 @@ texture_region_size = Vector2i(32, 32)
 
 [sub_resource type="TileSet" id="TileSet_hi16i"]
 tile_size = Vector2i(32, 32)
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 3
+physics_layer_0/collision_mask = 3
 sources/0 = SubResource("TileSetAtlasSource_8jhfa")
 
 [node name="level_1" type="Node"]
@@ -448,8 +449,12 @@ z_index = -10
 texture_filter = 1
 texture = ExtResource("2_yvoxd")
 
+[node name="hazard_tiles" parent="level_holder" index="1"]
+layer_0/tile_data = PackedInt32Array(786435, 131073, 14, 786436, 262145, 14, 524288, 262145, 1342177294, 458752, 393217, 1342177294, 393216, 131073, 1342177294, 458758, 131073, 14, 458759, 131073, 14, 458760, 262145, 14, 458761, 393217, 14, 655373, 262145, 14, 655374, 131073, 14, 327693, 131073, 805306382, 327694, 262145, 805306382, 196620, 262145, 14, 65550, 393217, 805306382, 196624, 393217, 14)
+
 [node name="player" parent="level_holder" index="3"]
-position = Vector2(794, 596)
+position = Vector2(28, 598)
+total_lives = 7
 
 [node name="death_player" parent="level_holder" index="4"]
 position = Vector2(-203, -41)

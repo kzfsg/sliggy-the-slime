@@ -20,3 +20,8 @@ func _physics_process(_delta):
 			isLeft = true if collision.get_normal().x < 0 else false
 	
 	move_and_slide()
+
+
+func _on_area_2d_body_entered(body):
+	if body is Block:
+		isLeft = !isLeft

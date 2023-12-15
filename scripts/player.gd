@@ -125,7 +125,7 @@ func _physics_process(delta):
 		var collision = get_slide_collision(i)
 		if collision:
 			var collider = collision.get_collider()
-			if collider is HazardTile or collider is Hazard:
+			if collider is HazardTile or collider is Hazard or collider is Hazard2:
 				die()
 			if collider is RigidBody2D:
 				var normal = collision.get_normal()
