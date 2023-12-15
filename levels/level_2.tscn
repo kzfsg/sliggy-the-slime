@@ -3035,6 +3035,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Back" type="Label" parent="Text/Push"]
 anchors_preset = -1
+anchor_left = -0.0590278
 anchor_right = -0.0590278
 offset_left = 365.0
 offset_top = 232.0
@@ -3048,6 +3049,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Front" type="Label" parent="Text/Push"]
 anchors_preset = -1
+anchor_left = -0.0546875
 anchor_right = -0.0546875
 offset_left = 362.0
 offset_top = 234.0
