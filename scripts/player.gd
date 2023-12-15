@@ -61,6 +61,8 @@ func _ready():
 func _process(_delta):
 	#if hp_label:
 		#hp_label.text = str(lives)
+	if count_deaths and hp_label:
+		hp_label.text = str(PlayerVariables.deaths)
 	if curr_state == state.spawning:
 		return
 	#emit_signal("player_pos_signal", position)
@@ -165,6 +167,7 @@ func _physics_process(delta):
 		if collision:
 			var collider = collision.get_collider()
 			if collider is HazardTile or collider is Hazard or collider is Hazard2:
+				print('collider trigger death')
 				die()
 			if collider is RigidBody2D:
 				var normal = collision.get_normal()
@@ -187,13 +190,10 @@ func stop_moving():
 	velocity = Vector2(0,0)
 
 func die():
-	if count_deaths: 
-		print('1')
-		deaths += 0
-		if hp_label:
-			print('2')
-			hp_label.text = str(deaths)
 	if curr_state == state.dead: return
+	curr_state = state.dead
+	if count_deaths: 
+		PlayerVariables.deaths += 1
 	#collision_shape_2d.set_deferred("disabled",true)
 	lives -= 1
 	collision_shape_2d.set_deferred("disabled",true)
