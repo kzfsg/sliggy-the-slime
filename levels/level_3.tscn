@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://w67hxagfgpsq"]
+[gd_scene load_steps=34 format=3 uid="uid://w67hxagfgpsq"]
 
 [ext_resource type="PackedScene" uid="uid://ctsxqifl3ubd4" path="res://scenes/level_holder.tscn" id="1_4gyi4"]
 [ext_resource type="Texture2D" uid="uid://c6m4anixt378t" path="res://lab-tileset/1 Tiles/full_tile.png" id="2_mb1vg"]
@@ -30,6 +30,7 @@
 [ext_resource type="Texture2D" uid="uid://ct8ldjymmggus" path="res://lab-tileset/3 Objects/Grass3.png" id="28_p64px"]
 [ext_resource type="Texture2D" uid="uid://b0alqn6mb8fre" path="res://lab-tileset/3 Objects/Monitor8.png" id="29_ct54n"]
 [ext_resource type="AudioStream" uid="uid://cmqkgsuva1cas" path="res://sounds/chemlab.wav" id="30_rhi4o"]
+[ext_resource type="FontFile" uid="uid://7uav15qfnban" path="res://StartGame/Templates + Misc/ThaleahFat/ThaleahFat.ttf" id="31_6h4fs"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8jhfa"]
 texture = ExtResource("2_mb1vg")
@@ -736,5 +737,37 @@ position = Vector2(826, 211)
 stream = ExtResource("30_rhi4o")
 volume_db = -6.0
 autoplay = true
+
+[node name="Control" type="Node" parent="."]
+
+[node name="Label2" type="Label" parent="Control"]
+z_index = 1
+offset_left = 763.0
+offset_top = 99.0
+offset_right = 916.0
+offset_bottom = 114.0
+theme_override_colors/font_color = Color(0.870588, 0.466667, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.545098, 0, 0.545098, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = -2
+theme_override_fonts/font = ExtResource("31_6h4fs")
+text = "[ARROW DOWN]"
+autowrap_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+offset_left = 754.0
+offset_top = 94.0
+offset_right = 907.0
+offset_bottom = 134.0
+
+[node name="Label" type="Label" parent="Control/MarginContainer"]
+layout_mode = 2
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = -2
+theme_override_constants/line_spacing = -1
+theme_override_fonts/font = ExtResource("31_6h4fs")
+text = "[ARROW DOWN] to fall through platforms"
+horizontal_alignment = 2
+autowrap_mode = 2
 
 [editable path="level_holder"]

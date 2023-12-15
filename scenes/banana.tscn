@@ -1,0 +1,77 @@
+[gd_scene load_steps=11 format=3 uid="uid://deub8xgjwnpwf"]
+
+[ext_resource type="Texture2D" uid="uid://dnw16hveu71o4" path="res://sprites/BananaMan.png" id="1_q6jq0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g266l"]
+atlas = ExtResource("1_q6jq0")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gs87n"]
+atlas = ExtResource("1_q6jq0")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_an3jp"]
+atlas = ExtResource("1_q6jq0")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_16e0r"]
+atlas = ExtResource("1_q6jq0")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_guieu"]
+atlas = ExtResource("1_q6jq0")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dodg5"]
+atlas = ExtResource("1_q6jq0")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_egd1q"]
+atlas = ExtResource("1_q6jq0")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o165r"]
+atlas = ExtResource("1_q6jq0")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8i2ke"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g266l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gs87n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_an3jp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_16e0r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_guieu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dodg5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_egd1q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o165r")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Banana" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_8i2ke")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.0994774
+flip_h = true

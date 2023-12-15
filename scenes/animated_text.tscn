@@ -1,0 +1,89 @@
+[gd_scene load_steps=8 format=3 uid="uid://dpvx1nd6jix64"]
+
+[ext_resource type="Script" path="res://scripts/AnimatedText.gd" id="1_b0ys1"]
+[ext_resource type="LabelSettings" uid="uid://br0otrtbu0b7v" path="res://tilemaps/Text.tres" id="2_bvon8"]
+[ext_resource type="FontFile" uid="uid://7uav15qfnban" path="res://StartGame/Templates + Misc/ThaleahFat/ThaleahFat.ttf" id="2_lq5jp"]
+
+[sub_resource type="Animation" id="Animation_0jck0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_k1ocd"]
+resource_name = "show"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:label_settings")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_bvon8")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:visible_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jsya7"]
+_data = {
+"RESET": SubResource("Animation_0jck0"),
+"show": SubResource("Animation_k1ocd")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_871er"]
+size = Vector2(20, 135.875)
+
+[node name="AnimatedText" type="Node2D"]
+script = ExtResource("1_b0ys1")
+
+[node name="Dialogue" type="MarginContainer" parent="."]
+offset_left = -112.0
+offset_top = -65.0
+offset_right = 113.0
+offset_bottom = 67.0
+
+[node name="Label" type="Label" parent="Dialogue"]
+z_index = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_lq5jp")
+text = "Lorem Ipsumsadsd"
+label_settings = ExtResource("2_bvon8")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Dialogue"]
+libraries = {
+"": SubResource("AnimationLibrary_jsya7")
+}
+
+[node name="Area2D" type="Area2D" parent="Dialogue"]
+position = Vector2(112, 65)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dialogue/Area2D"]
+position = Vector2(-11, 1)
+shape = SubResource("RectangleShape2D_871er")
+
+[connection signal="body_entered" from="Dialogue/Area2D" to="." method="_on_area_2d_body_entered"]
