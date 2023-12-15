@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://dsyqubot4iron"]
+[gd_scene load_steps=52 format=3 uid="uid://dsyqubot4iron"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_8krbp"]
 [ext_resource type="Texture2D" uid="uid://dh11hdyuyqpn8" path="res://sprites/sligga_base.png" id="1_cq0b4"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://3w3i4ctkkl48" path="res://sprites/sliggy_push.png" id="5_kqsfs"]
 [ext_resource type="Texture2D" uid="uid://blbsbaqt3jksp" path="res://sprites/sliggy_spawn.png" id="7_i7c4u"]
 [ext_resource type="PackedScene" uid="uid://1h6q23062vgo" path="res://scenes/lives_indicator.tscn" id="9_xh1q6"]
+[ext_resource type="AudioStream" uid="uid://dxc3j022cy7xr" path="res://sounds/sliggy_jump_1.wav" id="10_2vkp6"]
+[ext_resource type="AudioStream" uid="uid://jyeq4olwh5ss" path="res://sounds/sliggy_jump_2.wav" id="11_xoqk3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ds0yc"]
 atlas = ExtResource("2_dh25v")
@@ -346,6 +348,14 @@ limit_bottom = 670
 visible = false
 position = Vector2(-3.77359, -184)
 scale = Vector2(3, 3)
+
+[node name="audio" type="Node" parent="."]
+
+[node name="jump_1" type="AudioStreamPlayer" parent="audio"]
+stream = ExtResource("10_2vkp6")
+
+[node name="jump_2" type="AudioStreamPlayer" parent="audio"]
+stream = ExtResource("11_xoqk3")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]

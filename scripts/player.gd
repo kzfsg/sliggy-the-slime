@@ -13,6 +13,8 @@ const PUSH = 200
 @onready var death_player = $"../death_player"
 @onready var spawnpoint = $"../spawnpoint"
 @onready var lives_indicator = $lives_indicator
+@onready var jump_audio_1 = $audio/jump_1
+@onready var jump_audio_2 = $audio/jump_2
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -30,6 +32,8 @@ var lives: int
 @export var limited_lives: bool = true
 
 func jump(delta):
+	var jump_audio = [jump_audio_1, jump_audio_2].pick_random()
+	jump_audio.play()
 	jump_extend_counter += delta
 	velocity.y = JUMP_VELOCITY
 

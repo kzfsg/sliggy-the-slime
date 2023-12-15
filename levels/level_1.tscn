@@ -1,9 +1,10 @@
-[gd_scene load_steps=30 format=3 uid="uid://cpy14qmppc8xb"]
+[gd_scene load_steps=31 format=3 uid="uid://cpy14qmppc8xb"]
 
 [ext_resource type="Script" path="res://StartGame/StartGame.gd" id="1_n7wt4"]
 [ext_resource type="PackedScene" uid="uid://boxye5m1nb4w6" path="res://StartGame/BG.tscn" id="2_8nklu"]
 [ext_resource type="FontFile" uid="uid://7uav15qfnban" path="res://StartGame/Templates + Misc/ThaleahFat/ThaleahFat.ttf" id="3_84qrv"]
 [ext_resource type="Texture2D" uid="uid://dh02x61uhx770" path="res://StartGame/Templates + Misc/RightArrow.png" id="4_1a818"]
+[ext_resource type="AudioStream" uid="uid://bq34dq85bnynv" path="res://sounds/select.mp3" id="4_rtv13"]
 [ext_resource type="Texture2D" uid="uid://bosvfg47ctwew" path="res://StartGame/Templates + Misc/LeftArrow.png" id="5_htomj"]
 [ext_resource type="Texture2D" uid="uid://bdqrrskooyaiy" path="res://StartGame/TexturePack/Assets/Tiles.png" id="6_uberc"]
 [ext_resource type="Texture2D" uid="uid://lkwiagylpn6n" path="res://StartGame/TexturePack/Trees/Green-Tree.png" id="7_b3ad2"]
@@ -15305,12 +15306,18 @@ rotation = 1.5708
 [node name="spawnpoint" parent="." instance=ExtResource("15_5xyfi")]
 position = Vector2(-174.776, 307)
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="audio" type="Node" parent="."]
+
+[node name="lobby_music" type="AudioStreamPlayer" parent="audio"]
 stream = ExtResource("18_me7to")
 volume_db = -15.0
 autoplay = true
 
+[node name="select" type="AudioStreamPlayer" parent="audio"]
+stream = ExtResource("4_rtv13")
+
 [connection signal="pressed" from="Main Menu/MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Main Menu/MarginContainer/VBoxContainer/Play" to="audio/select" method="play"]
 [connection signal="pressed" from="Main Menu/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
 
 [editable path="player"]
