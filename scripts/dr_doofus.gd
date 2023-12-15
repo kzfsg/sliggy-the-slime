@@ -6,10 +6,10 @@ const DASH_SPEED = 250
 const DASH_DIST = 200
 
 const lines: Array[String] = [
-	"Dr. Doofus: Sliggy, you are my greatest failure...",
+	"Dr. Doofus: Nasty slime, you are my greatest failure...",
 	"Dr. Doofus: Keep your blocks out of my face!",
 	"Dr. Doofus: You won't get so lucky again.",
-	"Dr. Doofus: Stop now, or you'll regret it!",
+	"Dr. Doofus: Stop this Sliggy, or you'll regret it!",
 	"Dr. Doofus: With this treasure, I summon thee..."
 ]
 
