@@ -22,7 +22,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 enum state {walk, dash, freeze, follow, dead}
 var curr_state = state.walk
 var dash_direction = 1
-var hp = 2
+@export var hp = 1
 
 var first_aggro = false
 
@@ -94,41 +94,53 @@ func trigger_dash(direction):
 	curr_state = state.freeze
 	ani_sprite.play("aggro")
 	await ani_sprite.animation_finished
-	#await get_tree().create_timer(0.8).timeout
+	if curr_state == state.dead: return
 	dash_sound.play()
 	curr_state = state.dash
 	ani_sprite.play("dash")
 	await ani_sprite.animation_finished
+	if curr_state == state.dead: return
 	curr_state = state.freeze
 	ani_sprite.play("rest")
 	await ani_sprite.animation_finished
-	#await get_tree().create_timer(0.8).timeout
+	if curr_state == state.dead: return
 	curr_state = state.walk
 
 func trigger_attack(collider):
 	curr_state = state.freeze
 	ani_sprite.play("attack")
 	await ani_sprite.animation_finished
+	if curr_state == state.dead: return
 	collider.queue_free()
 	curr_state = state.walk
 	
 func trigger_hurt():
+	print('trgger_hurt, prev hp: %s'%hp)
 	hp -= 1
+	print('new hp: %s'%hp)
 	if hp == 0:
+		print('change state to dead')
 		curr_state = state.dead
 	else:
 		curr_state = state.freeze
 	ani_sprite.play("hurt")
+	print('play hurt')
 	await ani_sprite.animation_finished
+	print('finish playing hurt')
 	if hp == 0:
-		DialogManager._advance_dialog()
-		ani_sprite.play('death')
-		await ani_sprite.animation_finished
-		queue_free()
+		print('inside hp === 0')
+		trigger_death()
 		return
 	ani_sprite.play("rest")
 	await ani_sprite.animation_finished
 	curr_state = state.walk
+	
+func trigger_death():
+	DialogManager._advance_dialog()
+	ani_sprite.play('death')
+	await ani_sprite.animation_finished
+	queue_free()
+	$"../right_exit".trigger()
 
 func _on_area_2d_body_entered(body):
 	if body is Player and curr_state != state.dead:
