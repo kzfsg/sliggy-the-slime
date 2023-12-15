@@ -327,7 +327,7 @@ texture_filter = 1
 position = Vector2(6.94843, -26.8259)
 scale = Vector2(0.699018, 0.699018)
 sprite_frames = SubResource("SpriteFrames_loumv")
-animation = &"falling"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
