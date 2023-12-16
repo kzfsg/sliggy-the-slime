@@ -19,9 +19,6 @@ const RUNNING_AUDIO_STOP_DELAY = 0.3
 @onready var running_audio = $audio/running
 @onready var landing_audio = $audio/landing
 @onready var hp_label = $"../hud/hp/Label"
-@onready var dead_icon = $"../hud/hp/Sprite2D"
-@onready var pushing_audio = $audio/pushing
-@onready var timer_label = $"../hud/timer"
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -33,14 +30,10 @@ var should_show_after_death = false
 var lives: int
 @export var show_vat_spawn: bool = false
 @export var limited_lives: bool = true
-enum state {idle, running, falling, dead, respawning, spawning, pushing, locked}
+enum state {idle, running, falling, dead, respawning, spawning, pushing}
 var curr_state = state.idle
 var running_audio_stop_counter = 0
 var prev_velocity: Vector2
-@export var count_deaths: bool = true
-var deaths = 0
-@export var start_timer_here = false
-@export var show_timer = true
 
 func jump(delta):
 	var jump_audio = [jump_audio_1, jump_audio_2].pick_random()
@@ -52,13 +45,12 @@ func clear():
 	get_tree().call_group("blocks", "queue_free")
 
 func _ready():
-	if start_timer_here:
-		PlayerVariables.time_elapsed = 0
-	if not count_deaths:
-		dead_icon.visible = false
-		hp_label.visible = false
-	if not show_timer:
-		timer_label.visible = false
+	print(get_tree().get_current_scene().get_path(), "<- scene")
+	if str(get_tree().get_current_scene().get_path()) != "/root/level_3":
+		print("not level 3!")
+		show_vat_spawn = false
+	else:
+		show_vat_spawn = true
 	if show_vat_spawn:
 		curr_state = state.spawning
 		animated_sprite_2d.play("spawn")
@@ -67,19 +59,8 @@ func _ready():
 	lives = total_lives
 
 func _process(_delta):
-	#if hp_label:
-		#hp_label.text = str(lives)
-	if count_deaths and hp_label:
-		hp_label.text = str(PlayerVariables.deaths)
-	if timer_label:
-		var time_elapsed = PlayerVariables.time_elapsed
-		var time_str = str(snapped(time_elapsed, 0.01))
-		var pad = 3 - time_str.split('.')[-1].length()
-		for i in range(pad):
-			time_str += '0'
-		if '.' not in time_str:
-			time_str += '.000'
-		timer_label.text = time_str
+	if hp_label:
+		hp_label.text = str(lives)
 	if curr_state == state.spawning:
 		return
 	#emit_signal("player_pos_signal", position)
@@ -89,14 +70,10 @@ func _process(_delta):
 		respawn()
 
 func _physics_process(delta):
-	if curr_state == state.locked:
-		animated_sprite_2d.play('idle')
-		return
 	if curr_state == state.dead: 
 		running_audio.stop()
-		pushing_audio.stop()
 		return
-	#print(state.keys()[curr_state])
+	print(state.keys()[curr_state])
 	prev_velocity = velocity
 	move_and_slide()
 	var cannot_move = curr_state in [state.dead, state.respawning]
@@ -108,13 +85,6 @@ func _physics_process(delta):
 		collision_shape_2d.disabled = false
 		animated_sprite_2d.play("spawn")
 		return
-		
-	if curr_state == state.pushing:
-		if not pushing_audio.playing:
-			pushing_audio.play()
-	else:
-		if pushing_audio.playing:
-			pushing_audio.stop()
 	#animations
 	if get_real_velocity().x != 0 and is_on_floor():
 		if curr_state == state.pushing:
@@ -195,7 +165,6 @@ func _physics_process(delta):
 		if collision:
 			var collider = collision.get_collider()
 			if collider is HazardTile or collider is Hazard or collider is Hazard2:
-				print('collider trigger death')
 				die()
 			if collider is RigidBody2D:
 				var normal = collision.get_normal()
@@ -219,9 +188,6 @@ func stop_moving():
 
 func die():
 	if curr_state == state.dead: return
-	curr_state = state.dead
-	if count_deaths: 
-		PlayerVariables.deaths += 1
 	#collision_shape_2d.set_deferred("disabled",true)
 	lives -= 1
 	collision_shape_2d.set_deferred("disabled",true)
@@ -240,7 +206,7 @@ func respawn():
 	if lives == 0 and limited_lives:
 		lives = total_lives
 		clear()
-		curr_state = state.spawning
+		curr_state = state.respawning
 	else:
 		curr_state = state.respawning
 
