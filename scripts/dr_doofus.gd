@@ -10,7 +10,7 @@ const lines: Array[String] = [
 	"Dr. Doofus: Keep your blocks out of my face!",
 	"Dr. Doofus: You won't get so lucky again.",
 	"Dr. Doofus: Stop this Sliggy, or you'll regret it!",
-	"Dr. Doofus: With this treasure, I summon thee..."
+	"Dr. Doofus: AEEUEGH"
 ]
 
 @onready var player = $"../player"
