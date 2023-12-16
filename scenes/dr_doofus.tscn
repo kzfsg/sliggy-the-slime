@@ -67,3 +67,6 @@ position = Vector2(10, -7)
 sprite_frames = SubResource("SpriteFrames_upjvy")
 animation = &"walk"
 frame_progress = 0.692753
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true

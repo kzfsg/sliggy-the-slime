@@ -50,3 +50,7 @@ func _advance_dialog():
 			return
 			
 		_show_text_box()
+		
+func _end_dialog():
+	is_dialog_active = false
+	current_line_index = 0

@@ -45,6 +45,12 @@ func clear():
 	get_tree().call_group("blocks", "queue_free")
 
 func _ready():
+	print(get_tree().get_current_scene().get_path(), "<- scene")
+	if str(get_tree().get_current_scene().get_path()) != "/root/level_3":
+		print("not level 3!")
+		show_vat_spawn = false
+	else:
+		show_vat_spawn = true
 	if show_vat_spawn:
 		curr_state = state.spawning
 		animated_sprite_2d.play("spawn")
@@ -200,7 +206,7 @@ func respawn():
 	if lives == 0 and limited_lives:
 		lives = total_lives
 		clear()
-		curr_state = state.spawning
+		curr_state = state.respawning
 	else:
 		curr_state = state.respawning
 
