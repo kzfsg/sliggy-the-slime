@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://lkwiagylpn6n" path="res://StartGame/TexturePack/Trees/Green-Tree.png" id="9_su0b7"]
 [ext_resource type="Texture2D" uid="uid://bwj4v60jg52j0" path="res://StartGame/TexturePack/Trees/Yellow-Tree.png" id="10_nlu33"]
 [ext_resource type="PackedScene" uid="uid://ctsxqifl3ubd4" path="res://scenes/level_holder.tscn" id="12_flrml"]
-[ext_resource type="TileSet" uid="uid://cphmeyd3jfxkg" path="res://tilemaps/HouseTileSet.tres" id="13_au3g0"]
+[ext_resource type="TileSet" uid="uid://dilkpnrc5ev31" path="res://tilemaps/HouseTileSet.tres" id="13_au3g0"]
 [ext_resource type="FontFile" uid="uid://7uav15qfnban" path="res://StartGame/Templates + Misc/ThaleahFat/ThaleahFat.ttf" id="14_flarw"]
 [ext_resource type="PackedScene" uid="uid://deub8xgjwnpwf" path="res://scenes/banana.tscn" id="15_l1dyj"]
 
@@ -35319,16 +35319,6 @@ layer_12/tile_data = PackedInt32Array(-65511, 1114113, 1, 25, 1114113, 2, 65561,
 
 [node name="level_holder" parent="." instance=ExtResource("12_flrml")]
 
-[node name="player" parent="level_holder" index="2"]
-z_index = 1
-position = Vector2(36, 486)
-
-[node name="Camera2D" parent="level_holder/player" index="2"]
-zoom = Vector2(1, 1)
-limit_left = 0
-limit_right = 1152
-limit_bottom = 656
-
 [node name="death_player" parent="level_holder" index="3"]
 position = Vector2(-116, -3)
 
@@ -35340,6 +35330,16 @@ position = Vector2(26, 482)
 
 [node name="checkpoint" parent="level_holder" index="6"]
 position = Vector2(-182, -3)
+
+[node name="player" parent="level_holder" index="8"]
+z_index = 1
+position = Vector2(36, 486)
+
+[node name="Camera2D" parent="level_holder/player" index="2"]
+zoom = Vector2(1, 1)
+limit_left = 0
+limit_right = 1152
+limit_bottom = 656
 
 [node name="Label" type="Label" parent="."]
 offset_left = 852.0
