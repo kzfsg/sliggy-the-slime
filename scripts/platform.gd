@@ -4,7 +4,7 @@ extends StaticBody2D
 @onready var area = $Area2D
 
 func _process(delta):
-	if Input.is_action_pressed("ui_down"):
+	if Input.is_action_pressed("down"):
 		area.set_deferred("monitoring", true)
 		print("downey jr")
 

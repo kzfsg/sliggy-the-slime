@@ -41,6 +41,7 @@ var prev_velocity: Vector2
 var deaths = 0
 @export var start_timer_here = false
 @export var show_timer = true
+@export var stop_timer_here = false
 
 func jump(delta):
 	var jump_audio = [jump_audio_1, jump_audio_2].pick_random()
@@ -52,6 +53,16 @@ func clear():
 	get_tree().call_group("blocks", "queue_free")
 
 func _ready():
+	print(PlayerVariables.time_elapsed)
+	if timer_label and stop_timer_here:
+		var time_elapsed = PlayerVariables.time_elapsed
+		var time_str = str(snapped(time_elapsed, 0.01))
+		var pad = 3 - time_str.split('.')[-1].length()
+		for i in range(pad):
+			time_str += '0'
+		if '.' not in time_str:
+			time_str += '.000'
+		timer_label.text = time_str
 	if start_timer_here:
 		PlayerVariables.time_elapsed = 0
 	if not count_deaths:
@@ -71,7 +82,7 @@ func _process(_delta):
 		#hp_label.text = str(lives)
 	if count_deaths and hp_label:
 		hp_label.text = str(PlayerVariables.deaths)
-	if timer_label:
+	if timer_label and not stop_timer_here:
 		var time_elapsed = PlayerVariables.time_elapsed
 		var time_str = str(snapped(time_elapsed, 0.01))
 		var pad = 3 - time_str.split('.')[-1].length()

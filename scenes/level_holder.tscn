@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ctsxqifl3ubd4"]
+[gd_scene load_steps=11 format=3 uid="uid://ctsxqifl3ubd4"]
 
 [ext_resource type="PackedScene" uid="uid://dobsobymusda1" path="res://scenes/level_background.tscn" id="1_35act"]
 [ext_resource type="PackedScene" uid="uid://un0j7l2upmv2" path="res://tilemaps/hazard_tiles.tscn" id="2_p4h6l"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://lb4ug62creoj" path="res://scenes/endpoint.tscn" id="5_svy7r"]
 [ext_resource type="PackedScene" uid="uid://ng4s4bla3o1" path="res://scenes/spawnpoint.tscn" id="6_dwqjy"]
 [ext_resource type="PackedScene" uid="uid://dvufa7xvj2jth" path="res://scenes/checkpoint.tscn" id="7_bqi7m"]
+[ext_resource type="FontFile" uid="uid://7uav15qfnban" path="res://StartGame/Templates + Misc/ThaleahFat/ThaleahFat.ttf" id="9_58dex"]
 [ext_resource type="Texture2D" uid="uid://diqsx5fcgv04f" path="res://sprites/sliggy_dead_face.png" id="9_g77hs"]
 
 [node name="level_holder" type="Node"]
@@ -41,7 +42,14 @@ offset_left = 66.0
 offset_top = 15.0
 offset_right = 106.0
 offset_bottom = 57.0
-theme_override_font_sizes/font_size = 30
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("9_58dex")
+theme_override_font_sizes/font_size = 50
 text = "5"
 metadata/_edit_use_anchors_ = true
 
@@ -52,7 +60,14 @@ offset_left = 1109.0
 offset_top = 2.0
 offset_right = 1150.0
 offset_bottom = 25.0
-theme_override_font_sizes/font_size = 30
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("9_58dex")
+theme_override_font_sizes/font_size = 55
 text = "00:00"
 horizontal_alignment = 2
 metadata/_edit_use_anchors_ = true

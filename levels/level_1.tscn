@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cpy14qmppc8xb"]
+[gd_scene load_steps=32 format=3 uid="uid://cpy14qmppc8xb"]
 
 [ext_resource type="Script" path="res://StartGame/StartGame.gd" id="1_n7wt4"]
 [ext_resource type="PackedScene" uid="uid://boxye5m1nb4w6" path="res://StartGame/BG.tscn" id="2_8nklu"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://lb4ug62creoj" path="res://scenes/endpoint.tscn" id="14_kyk1b"]
 [ext_resource type="PackedScene" uid="uid://ng4s4bla3o1" path="res://scenes/spawnpoint.tscn" id="15_5xyfi"]
 [ext_resource type="AudioStream" uid="uid://ccnro464frqcq" path="res://sounds/lobby.mp3" id="18_lqvbx"]
+[ext_resource type="PackedScene" uid="uid://deub8xgjwnpwf" path="res://scenes/banana.tscn" id="20_t1w33"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5oyuf"]
 texture = ExtResource("9_3masc")
@@ -15053,12 +15054,6 @@ text = "Play"
 icon_alignment = 1
 vertical_icon_alignment = 2
 
-[node name="Quit" type="Button" parent="Main Menu/MarginContainer/VBoxContainer" groups=["Menu"]]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_84qrv")
-theme_override_font_sizes/font_size = 40
-text = "Quit"
-
 [node name="menu_tiles" type="TileMap" parent="Main Menu"]
 position = Vector2(9.224, 0)
 tile_set = SubResource("TileSet_d1sx4")
@@ -15315,8 +15310,25 @@ autoplay = true
 [node name="select" type="AudioStreamPlayer" parent="audio"]
 stream = ExtResource("4_rtv13")
 
+[node name="Banana" parent="." instance=ExtResource("20_t1w33")]
+position = Vector2(1040.22, 272)
+
+[node name="Banana2" parent="." instance=ExtResource("20_t1w33")]
+position = Vector2(1052.22, 271)
+
+[node name="Banana3" parent="." instance=ExtResource("20_t1w33")]
+position = Vector2(1068.22, 269)
+
+[node name="Banana4" parent="." instance=ExtResource("20_t1w33")]
+position = Vector2(1090.22, 271)
+
+[node name="Banana5" parent="." instance=ExtResource("20_t1w33")]
+position = Vector2(1078.22, 276)
+
+[node name="Banana6" parent="." instance=ExtResource("20_t1w33")]
+position = Vector2(1107.22, 276)
+
 [connection signal="pressed" from="Main Menu/MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Main Menu/MarginContainer/VBoxContainer/Play" to="audio/select" method="play"]
-[connection signal="pressed" from="Main Menu/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
 
 [editable path="player"]
