@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://bm4mmeowqtbl3"]
+
+[ext_resource type="PackedScene" uid="uid://bylxhv5ey8kxx" path="res://FinalScene/world.tscn" id="1_olkny"]
+
+[node name="FinalScene" type="Node2D"]
+
+[node name="World" parent="." instance=ExtResource("1_olkny")]
+
+[editable path="World"]
+[editable path="World/level_holder"]
+[editable path="World/level_holder/player"]
+[editable path="World/AnimatedText"]
+[editable path="World/AnimatedText2"]
