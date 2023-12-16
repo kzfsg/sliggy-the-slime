@@ -45,12 +45,19 @@ func clear():
 	get_tree().call_group("blocks", "queue_free")
 
 func _ready():
+	if start_timer_here:
+		PlayerVariables.time_elapsed = 0
+	if not count_deaths:
+		dead_icon.visible = false
+		hp_label.visible = false
 	print(get_tree().get_current_scene().get_path(), "<- scene")
 	if str(get_tree().get_current_scene().get_path()) != "/root/level_3":
 		print("not level 3!")
 		show_vat_spawn = false
 	else:
 		show_vat_spawn = true
+	if not show_timer:
+		timer_label.visible = false
 	if show_vat_spawn:
 		curr_state = state.spawning
 		animated_sprite_2d.play("spawn")
