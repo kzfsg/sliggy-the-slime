@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://s5b0k3dxun5g"]
+[gd_scene load_steps=40 format=3 uid="uid://s5b0k3dxun5g"]
 
 [ext_resource type="PackedScene" uid="uid://ctsxqifl3ubd4" path="res://scenes/level_holder.tscn" id="1_4gyi4"]
 [ext_resource type="Texture2D" uid="uid://bh5uvgcwls123" path="res://lab-tileset/2 Background/Night/2.png" id="1_icr2m"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dpvx1nd6jix64" path="res://scenes/animated_text.tscn" id="7_5st3r"]
 [ext_resource type="Texture2D" uid="uid://da15jtpd16mtl" path="res://lab-tileset/3 Objects/Capsule1.png" id="7_r77wq"]
 [ext_resource type="Texture2D" uid="uid://d1ks7u0ja21ab" path="res://lab-tileset/3 Objects/Door2.png" id="8_b17gr"]
+[ext_resource type="Script" path="res://scripts/dr_doofus_2.gd" id="9_bum3l"]
 [ext_resource type="Texture2D" uid="uid://onl7t58m0f3l" path="res://lab-tileset/3 Objects/Web1.png" id="10_6kkvq"]
 [ext_resource type="Texture2D" uid="uid://w3ej6pacwdwf" path="res://lab-tileset/3 Objects/Web2.png" id="11_3htus"]
 [ext_resource type="Texture2D" uid="uid://clhsef2hs7qk2" path="res://lab-tileset/3 Objects/Web5.png" id="12_5a25f"]
@@ -33,6 +34,7 @@
 [ext_resource type="Texture2D" uid="uid://ddsd7i1uh8kdr" path="res://lab-tileset/3 Objects/Grass4.png" id="31_4vimd"]
 [ext_resource type="Texture2D" uid="uid://cngtyjf5c0v8i" path="res://lab-tileset/3 Objects/Grass8.png" id="32_c2hy2"]
 [ext_resource type="Texture2D" uid="uid://c3mu1gbvddt4y" path="res://lab-tileset/3 Objects/Capsule4.png" id="33_ixr3y"]
+[ext_resource type="PackedScene" uid="uid://b0jvpdopulqvv" path="res://scenes/dr_doofus.tscn" id="34_qo2b2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i0wlt"]
 texture = ExtResource("2_mb1vg")
@@ -2849,7 +2851,8 @@ texture = ExtResource("4_xn70j")
 19:24/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSet" id="TileSet_jt513"]
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 3
+physics_layer_0/collision_mask = 3
 sources/0 = SubResource("TileSetAtlasSource_i0wlt")
 sources/1 = SubResource("TileSetAtlasSource_2e4p2")
 
@@ -2947,7 +2950,7 @@ zoom = Vector2(1.3, 1.3)
 limit_left = -64
 limit_top = -312
 limit_right = 2686
-limit_bottom = 535
+limit_bottom = 500
 
 [node name="checkpoint2" parent="level_holder" instance=ExtResource("3_xdoxe")]
 position = Vector2(1103, 296)
@@ -3073,6 +3076,16 @@ position = Vector2(-224, -3)
 
 [node name="checkpoint3" parent="level_holder" instance=ExtResource("3_xdoxe")]
 position = Vector2(2125, 297)
+
+[node name="dr_doofus" parent="level_holder" instance=ExtResource("34_qo2b2")]
+position = Vector2(283, 102)
+script = ExtResource("9_bum3l")
+
+[node name="AnimatedSprite2D" parent="level_holder/dr_doofus" index="0"]
+scale = Vector2(3.67463, 3.67463)
+
+[node name="CollisionShape2D" parent="level_holder/dr_doofus" index="2"]
+position = Vector2(-0.5, 15.875)
 
 [node name="hazard_tiles" parent="." instance=ExtResource("5_m1ty0")]
 position = Vector2(-1, -56)
@@ -3485,3 +3498,4 @@ texture = ExtResource("26_vv3q6")
 [editable path="level_holder/AnimatedText5"]
 [editable path="level_holder/AnimatedText3"]
 [editable path="level_holder/AnimatedText4"]
+[editable path="level_holder/dr_doofus"]

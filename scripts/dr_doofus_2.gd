@@ -5,14 +5,6 @@ const FOLLOW_SPEED = 125
 const DASH_SPEED = 250
 const DASH_DIST = 200
 
-const lines: Array[String] = [
-	"Dr. Doofus: Nasty slime, you are my greatest failure...",
-	"Dr. Doofus: Keep your blocks out of my face!",
-	"Dr. Doofus: You won't get so lucky again.",
-	"Dr. Doofus: Stop this Sliggy, or you'll regret it!",
-	"Dr. Doofus: With this treasure, I summon thee..."
-]
-
 @onready var player = $"../player"
 @onready var ani_sprite = $AnimatedSprite2D
 @onready var dash_sound = $dash
@@ -28,14 +20,11 @@ var dash_direction = 1
 var first_aggro = false
 
 func _ready():
-	player.curr_state = 7 #locked
+	await get_tree().create_timer(0.8).timeout
 	ani_sprite.play('aggro')
 	alert_sound.play()
-	DialogManager.start_dialog(Vector2(315,705), lines)
 	await get_tree().create_timer(3).timeout
-	curr_state = state.walk
-	await get_tree().create_timer(1).timeout
-	player.curr_state = 0 #locked
+	curr_state = state.follow
 
 func _physics_process(delta):
 	var player_pos = player.position
@@ -47,10 +36,7 @@ func _physics_process(delta):
 	
 	#follow or walk
 	if curr_state in [state.follow, state.walk]:
-		if player.position.y < position.y - 50 or player.curr_state == player.state.dead:
-			curr_state = state.walk
-		else:
-			curr_state = state.follow
+		curr_state = state.follow
 	
 	#match state
 	match curr_state:
@@ -60,18 +46,16 @@ func _physics_process(delta):
 				is_left = true
 			else:
 				is_left = false
+			#if player_x < position.x - 5:
+				#is_left = true
+			#elif player_x > position.x + 5:
+				#is_left = false
 			ani_sprite.flip_h = is_left
-			ani_sprite.play("run")
-			#position.x += direction * SPEED * delta
-			velocity.x = direction * FOLLOW_SPEED
-			#set state
-			#print("%s %s"%[player_dist_x,abs(player_dist_x - DASH_DIST)])
-			if abs(player_dist_x - DASH_DIST) < 50:
-				direction = (-1 if is_left else 1)
-				trigger_dash(direction)
-			if not first_aggro:
-				DialogManager._advance_dialog()
-				first_aggro = true
+			ani_sprite.play("walk")
+			if abs(player_x - position.x) > 5:
+				velocity.x = direction * SPEED
+			else:
+				velocity.x = 0
 		state.walk:
 			ani_sprite.flip_h = is_left
 			ani_sprite.play("walk")
