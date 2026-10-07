@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dac7tw72s8gmx"
-path="res://.godot/imported/sligga_death_detailed.png-7f1b40b4aeb436355cbd8f69f41749b3.ctex"
+uid="uid://cyxm10n4gg0d7"
+path="res://.godot/imported/sliggy_idle.png-68576ca5f4732dd9b9cb8dda414820c6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/sligga_death_detailed.png"
-dest_files=["res://.godot/imported/sligga_death_detailed.png-7f1b40b4aeb436355cbd8f69f41749b3.ctex"]
+source_file="res://sprites/sliggy_idle.png"
+dest_files=["res://.godot/imported/sliggy_idle.png-68576ca5f4732dd9b9cb8dda414820c6.ctex"]
 
 [params]
 

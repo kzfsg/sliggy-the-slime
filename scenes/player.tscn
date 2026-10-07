@@ -1,10 +1,10 @@
 [gd_scene load_steps=55 format=3 uid="uid://dsyqubot4iron"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_8krbp"]
-[ext_resource type="Texture2D" uid="uid://dh11hdyuyqpn8" path="res://sprites/sligga_base.png" id="1_cq0b4"]
-[ext_resource type="Texture2D" uid="uid://cyxm10n4gg0d7" path="res://sprites/sligga_idle.png" id="1_ith7a"]
+[ext_resource type="Texture2D" uid="uid://dh11hdyuyqpn8" path="res://sprites/sliggy_base.png" id="1_cq0b4"]
+[ext_resource type="Texture2D" uid="uid://cyxm10n4gg0d7" path="res://sprites/sliggy_idle.png" id="1_ith7a"]
 [ext_resource type="Texture2D" uid="uid://como8lcojdmkp" path="res://sprites/sliggy_falling.png" id="2_dh25v"]
-[ext_resource type="Texture2D" uid="uid://bbm15pco36tmd" path="res://sprites/sligga_run.png" id="3_j7gkm"]
+[ext_resource type="Texture2D" uid="uid://bbm15pco36tmd" path="res://sprites/sliggy_run.png" id="3_j7gkm"]
 [ext_resource type="Texture2D" uid="uid://dlg333dl5xd6x" path="res://sprites/sliggy_respawn.png" id="4_2royd"]
 [ext_resource type="Texture2D" uid="uid://3w3i4ctkkl48" path="res://sprites/sliggy_push.png" id="5_kqsfs"]
 [ext_resource type="Texture2D" uid="uid://blbsbaqt3jksp" path="res://sprites/sliggy_spawn.png" id="7_i7c4u"]
